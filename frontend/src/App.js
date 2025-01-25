@@ -1,6 +1,6 @@
 // App.js
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 // Importa los componentes de las páginas
 import Login from './pages/login/login';
@@ -13,6 +13,7 @@ function App() {
       {/* Aquí puedes agregar un encabezado, navegación u otros componentes comunes */}
       
       <Routes>
+      <Route path="/" element={<Navigate to={ROUTES.LOGIN} />} />
         <Route path={ROUTES.LOGIN} element={<Login />} />
         <Route path={ROUTES.MOON} element={<Moon />} />
         {/* Ruta 404 */}

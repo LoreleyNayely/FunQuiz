@@ -1,22 +1,48 @@
+// Importar dependencias necesarias
 const express = require('express');
-const cors = require('cors');
 const mongoose = require('mongoose');
-require('dotenv').config();
+const dotenv = require('dotenv');
+const cors = require('cors');
 
+// Cargar variables de entorno desde el archivo .env
+dotenv.config();
+
+// Crear una nueva instancia de la aplicación Express
 const app = express();
-const PORT = process.env.PORT || 5000;
 
+// Middleware para manejar CORS (Cross-Origin Resource Sharing)
 app.use(cors());
+
+// Middleware para procesar los datos JSON en las solicitudes
 app.use(express.json());
 
-// Example route
+// Conectar a la base de datos MongoDB (ajusta la URI a tu configuración)
+//comentar si aun no hay base de datos MongoDB
+/*mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+  .then(() => console.log('Conectado a la base de datos'))
+  .catch((err) => console.error('Error al conectar a la base de datos:', err));
+*/
+
+// Rutas de autenticación (login)
+const authRoutes = require('./routes/authRoutes');
+app.use('/api/auth', authRoutes); // Prefijo para todas las rutas de autenticación
+
+// Rutas para fases de la luna
+const moonRoutes = require('./routes/moonRoutes');
+app.use('/api/moon', moonRoutes); // Prefijo para las rutas relacionadas con las fases de la luna
+
+// Ruta principal
 app.get('/', (req, res) => {
-    res.send('Backend is running');
+  res.send('¡Servidor funcionando correctamente!');
 });
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('MongoDB connected'))
-    .catch(err => console.log(err));
+// Configurar el puerto
+const port = process.env.PORT || 3600; // Puedes usar un puerto definido en .env o 3600 por defecto
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Iniciar el servidor
+app.listen(port, () => {
+  console.log(`Servidor corriendo en http://localhost:${port}`);
+});

@@ -42,7 +42,6 @@ function Login() {
       <div className="register-links">
         <Link to="/moon-phases">¿No tienes cuenta?</Link>
         <Link to="/moon-phases">Regístrate</Link>
-
       </div>
       <div className="social-login">
         <div className="social-item">
