@@ -1,14 +1,13 @@
+// index.js
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import { BrowserRouter } from 'react-router-dom';
-import Moon from './pages/moon-phases/moon-phases';
-import Login from './pages/login/login';
+import App from './App'; // Aquí solo se importa App.js
 
+// Renderiza el componente App que contiene las rutas
 ReactDOM.render(
   <BrowserRouter>
-<Login/>
-    <Moon />
+    <App /> {/* El enrutamiento y las rutas están en App */}
   </BrowserRouter>,
   document.getElementById('root')
 );

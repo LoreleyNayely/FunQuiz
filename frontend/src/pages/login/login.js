@@ -1,7 +1,6 @@
 import React from 'react';
 import './login.css';
 import { Link } from 'react-router-dom';
-import { ROUTES } from '../../routes';
 
 // Usamos require.context para importar todas las imágenes de la carpeta 'assets'
 const images = require.context('../../assets', false, /\.(png|jpe?g|svg)$/);
@@ -31,16 +30,18 @@ function Login() {
             placeholder="Ingrese su contraseña"
           />
         </div>
-        <button type="submit" className="btn">
-          Ingresar
-        </button>
+        <Link to="/moon-phases">
+          <button type="button" className="btn">
+            Ingresar
+          </button>
+        </Link>
       </form>
       <div className="forgot-password">
-        <a href={ROUTES.MOON}>¿Olvidaste la contraseña?</a>
+      <Link to="/moon-phases">¿Olvidaste la contraseña?</Link>
       </div>
       <div className="register-links">
         <a href="https://github.com/LoreleyNayely/FunQuiz">¿No tienes cuenta?</a>
-        <Link to={ROUTES.MOON}>Regístrate</Link>
+        <Link to="/moon-phases">Regístrate</Link>
 
       </div>
       <div className="social-login">
