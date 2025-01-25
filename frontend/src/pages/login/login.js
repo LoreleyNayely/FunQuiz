@@ -40,7 +40,7 @@ function Login() {
       <Link to="/moon-phases">¿Olvidaste la contraseña?</Link>
       </div>
       <div className="register-links">
-        <a href="https://github.com/LoreleyNayely/FunQuiz">¿No tienes cuenta?</a>
+        <Link to="/moon-phases">¿No tienes cuenta?</Link>
         <Link to="/moon-phases">Regístrate</Link>
 
       </div>

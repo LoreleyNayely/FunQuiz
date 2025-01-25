@@ -1,6 +1,6 @@
 body {
+    font-family: 'Itim';
     margin: 0;
-    font-family: Arial, sans-serif;
     background-color: #f9f9f9;
 }
 
@@ -15,44 +15,61 @@ header img {
     display: block;
 }
 
-menu {
+.menu {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background: linear-gradient(to bottom, #E9F6EA, #B9C7B9); /* Fondo aplicado al header */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+    background: #E9F6EA; /* Fondo aplicado al header */
 }
 
 nav {
-    display: flex;
-    gap: 15px;
-    
+    font-size: 120%;
 }
 
 nav a {
     text-decoration: none;
     color: #333;
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 30px 60px;
+
 }
 
 nav a:hover {
-    background-color: #B9C7B9;
+    background-color: #8FADA1;
+}
+nav img {
+    height: 60px;
+    border-radius: 50%;
+    margin-left: auto; /* Esto mueve la imagen hacia la derecha */
+    margin-right: 30px;
 }
 
-.user {
+nav a span {
+    display: block;
+    margin-top: -8px;
+    margin-bottom: -8px;
+}
+
+
+.sesion {
     display: flex;
     align-items: center;
     gap: 10px;
-    position: right;
+    justify-content: flex-end; /* Alinea los elementos a la derecha */
+    font-size: 120%; /* Mismo tamaño que el menú */
+
 }
 
-.user img {
-    height: 40px;
-    border-radius: 50%;
-    position: right;
+.sesion button {
+    font-family: 'Itim';
+    font-size: 100%;
+    padding: 30px 50px; /* Mismo padding que el menú */
+    background-color: #B9C7B9; /* Color de fondo similar al menú */
+    border: none;
+    color: #333; /* Color de texto */
+    margin-bottom: 30px;
+}
+
+.sesion button:hover {
+    background-color: #8FADA1; /* Cambio de color en hover */
 }
 
 .game-container {
@@ -62,11 +79,11 @@ nav a:hover {
 }
 
 .game {
-    width: 60%;
+    width: 63%;
     background-color: #000;
-    border-radius: 10px;
     overflow: hidden;
     position: relative;
+    margin-left: 20px;
 }
 
 .game img {
@@ -75,28 +92,70 @@ nav a:hover {
 }
 
 .instructions {
-    width: 35%;
+    width: 30%;
     background-color: #99BCCD;
     border-radius: 10px;
     padding: 15px;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 1.5;
+    margin-right: 20px;
+    margin-left: 25px;
+}
+.instructions h2 {
+    margin-top: 0px;
+    font-family: 'Jersey';
+    margin-left: 65px; /* Mueve el h2 20px hacia la derecha dentro de la sección de instrucciones */
 }
 
+
 .instructions ul {
-    padding-left: 20px;
+    font-family: 'Kaisei HarunoUmi';
+    font-size: 100%;
+    list-style-type: none;
+    padding-left: 0; /* Elimina el padding izquierdo para evitar que los elementos se desalineen */
+    margin: 0; /* Elimina los márgenes por defecto de la lista */
+    text-align: center; /* Centra el contenido de la lista */
 }
 
 .instructions ul li {
-    margin-bottom: 10px;
+    margin-bottom: 40px; /* Espaciado general entre los elementos de la lista */
+    text-align: center;
 }
+
+/* Estilo para los elementos con un espaciado menor */
+.instructions ul li.small-spacing {
+    margin-bottom: 0px; /* Espaciado menor */
+}
+
+/* Estilo para los elementos con un espaciado mayor */
+.instructions ul li.large-spacing {
+    margin-bottom: 20px; /* Espaciado mayor */
+}
+
+/* Estilo para los elementos con viñetas */
+.with-bullet::before {
+    content: "•"; /* Representa la viñeta (puedes usar otros caracteres o emojis) */
+    margin-right: 10px; /* Espacio entre la viñeta y el texto */
+    font-size: 1.5em; /* Tamaño de la viñeta */
+    color: black; /* Color de la viñeta */
+    vertical-align: middle; /* Alinea la viñeta verticalmente al centro */
+}
+
+/* Los demás elementos de la lista sin viñeta */
+ul li:not(.with-bullet) {
+    list-style-type: none;
+}
+
 
 .related-content {
-    margin: 20px;
+    margin-left: 40px;
+    margin-right: 32px;
 }
 
-.related-content h3 {
-    margin-bottom: 15px;
+.related-content h2 {
+    font-weight: normal;
+    margin-top: 100px;
+    margin-bottom: 30px;
 }
 
 .related-items {
@@ -107,17 +166,14 @@ nav a:hover {
 .related-item {
     width: calc(25% - 15px);
     background-color: #fff;
-    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
+    margin-bottom: 160px;
+    border: 1px solid #000; /* Añadido el borde */
 }
+
 
 .related-item img {
     width: 100%;
     height: auto;
-}
-
-.related-item p {
-    padding: 10px;
 }
