@@ -1,4 +1,5 @@
-
+# FunQuiz
+Juego para niños área Ciencias Naturales aplicando usabilidad y accesibilidad.
 # Backend
 
    cd backend
@@ -18,6 +19,7 @@ El backend estará corriendo en http://localhost:3600.
     cd frontend
 
 Instala las dependencias del frontend
+
     npm install
 
 Ejecuta el frontend

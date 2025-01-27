@@ -1,5 +1,6 @@
 import React from 'react';
 import './moon-phases.css';
+import Maze from '../moon-phases/moon-game/maze';
 
 import { Link } from'react-router-dom';
 
@@ -27,11 +28,16 @@ function Moon() {
             <div className="sesion">
                 <button>Cerrar sesión</button>
             </div>
+
+
+
         <div className="content"></div>
             <main>
                 <div className="game-container">
                     <div className="game">
-                        <img src={images('./game.png')} alt="Juego de las fases de la Luna" />
+                        <div className="moon-phases-page">
+                            <Maze />
+                        </div>
                     </div>
                     
                     <div class="instructions">
@@ -54,16 +60,24 @@ function Moon() {
                     <h2>Más contenido relacionado</h2>
                     <div className="related-items">
                         <div className="related-item">
-                            <img src={images('./moon1.png')} alt="Relacionado 1" />
+                            <a href="https://view.genially.com/648654c5774f910012dc8587/presentation-movimientos-y-fases-de-la-luna" target="_blank" rel="noopener noreferrer">
+                                <img src={images('./moon1.png')} alt="Relacionado 1" />
+                            </a>
                         </div>
                         <div className="related-item">
-                            <img src={images('./moon2.png')} alt="Relacionado 2" />
+                            <a href="https://view.genially.com/648654c5774f910012dc8587/presentation-movimientos-y-fases-de-la-luna" target="_blank" rel="noopener noreferrer">
+                                <img src={images('./moon2.png')} alt="Relacionado 2" />
+                            </a>
                         </div>
                         <div className="related-item">
-                            <img src={images('./moon3.png')} alt="Relacionado 3" />
+                            <a href="https://view.genially.com/648654c5774f910012dc8587/presentation-movimientos-y-fases-de-la-luna" target="_blank" rel="noopener noreferrer">
+                                <img src={images('./moon3.png')} alt="Relacionado 3" />
+                            </a>
                         </div>
                         <div className="related-item">
-                            <img src={images('./moon4.png')} alt="Relacionado 4" />
+                            <a href="https://www.youtube.com/watch?v=ma0kKMc9PbE" target="_blank" rel="noopener noreferrer">
+                                <img src={images('./moon4.png')} alt="Relacionado 4" />
+                            </a>
                         </div>
                     </div>
                 </div>

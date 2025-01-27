@@ -1,0 +1,48 @@
+/* Fondo del laberinto */
+.maze {
+  display: grid;
+  grid-template-columns: repeat(40, 1fr); /* Ajusta el número de columnas según el tamaño del laberinto */
+  gap: 4px;
+  background-image: url('../../../assets/gameFont.png'); /* Ruta de la imagen de fondo */
+  background-size:cover; /* Ajusta la imagen al tamaño del contenedor */
+
+  padding: 20px; /* Espacio alrededor del laberinto */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Sombra para un efecto visual */
+  max-width: 800px; /* Ancho máximo del laberinto */
+  margin: 0 auto; /* Centrar el laberinto en la página */
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-left: 20px;
+}
+
+/* Estilos de las celdas */
+.cell {
+  width: 40px; /* Aumenta el tamaño de las celdas */
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil */
+}
+
+/* Estilos de las paredes */
+.wall {
+  background: #000; /* Color de las paredes */
+  opacity: 0.8; /* Transparencia para que se vea el fondo */
+}
+
+/* Estilos de los caminos */
+.path {
+  background: rgba(34, 34, 34, 0.5); /* Color del camino con transparencia */
+}
+
+/* Estilos del jugador */
+.player {
+  background-image: url('../../../assets/player1.png'); /* Ruta de la imagen del jugador */
+  background-size: cover; /* Ajusta la imagen al tamaño del contenedor */
+  background-position: center; /* Centra la imagen */
+  border-radius: 50%; /* Bordes redondeados (opcional) */
+  width: 100%; /* Ocupa todo el espacio de la celda */
+  height: 100%;
+}

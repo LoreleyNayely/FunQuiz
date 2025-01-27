@@ -1,0 +1,11 @@
+/* controls.css */
+.controls {
+    margin-top: 20px;
+  }
+  
+  button {
+    margin-right: 10px;
+    padding: 10px;
+    font-size: 1rem;
+  }
+  
