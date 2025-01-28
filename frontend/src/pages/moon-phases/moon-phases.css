@@ -29,12 +29,14 @@ nav a {
     text-decoration: none;
     color: #333;
     padding: 30px 60px;
-
+    transition: background-color 0.3s;
 }
 
-nav a:hover {
-    background-color: #8FADA1;
+nav a:hover,
+nav a.active {
+    background-color: #8FADA1; /* Color aplicado en hover y estado activo */
 }
+
 nav img {
     height: 60px;
     border-radius: 50%;
@@ -54,7 +56,8 @@ nav a span {
     align-items: center;
     gap: 10px;
     justify-content: flex-end; /* Alinea los elementos a la derecha */
-    font-size: 120%; /* Mismo tamaño que el menú */
+    font-size: 100%; /* Mismo tamaño que el menú */
+    
 
 }
 
@@ -65,7 +68,7 @@ nav a span {
     background-color: #B9C7B9; /* Color de fondo similar al menú */
     border: none;
     color: #333; /* Color de texto */
-    margin-bottom: 30px;
+    margin-bottom: 0px;
 }
 
 .sesion button:hover {

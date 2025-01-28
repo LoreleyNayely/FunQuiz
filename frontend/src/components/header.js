@@ -1,8 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+
 const images = require.context('../assets', false, /\.(png|jpe?g|svg)$/);
 
 function Header() {
+    const location = useLocation(); // Detecta la ruta actual
+    const [activeLink, setActiveLink] = useState(location.pathname); // Estado para rastrear la opción activa
+
+    // Maneja el cambio de opción activa
+    const handleActiveLink = (path) => {
+        setActiveLink(path);
+    };
+
     return (
         <>
             <header>
@@ -14,20 +23,50 @@ function Header() {
             </header>
 
             <nav className="menu">
-                <Link to="/login" tabIndex="0" aria-label="Ir a Huesos y Músculos">
+                <Link
+                    to="/login"
+                    tabIndex="0"
+                    aria-label="Ir a Huesos y Músculos"
+                    className={activeLink === '/login' ? 'active' : ''}
+                    onClick={() => handleActiveLink('/login')}
+                >
                     Huesos y Músculos
                 </Link>
-                <Link to="/moon-phases" tabIndex="0" aria-label="Ir a Fases de la Luna">
+                <Link
+                    to="/moon-phases"
+                    tabIndex="0"
+                    aria-label="Ir a Fases de la Luna"
+                    className={activeLink === '/moon-phases' ? 'active' : ''}
+                    onClick={() => handleActiveLink('/moon-phases')}
+                >
                     Fases de la Luna
                 </Link>
-                <Link to="/water-cycle" tabIndex="0" aria-label="Ir a Ciclo del Agua">
+                <Link
+                    to="/water-cycle"
+                    tabIndex="0"
+                    aria-label="Ir a Ciclo del Agua"
+                    className={activeLink === '/water-cycle' ? 'active' : ''}
+                    onClick={() => handleActiveLink('/water-cycle')}
+                >
                     Ciclo del Agua
                 </Link>
-                <Link to="/earth-movements" tabIndex="0" aria-label="Ir a Movimientos de la Tierra">
+                <Link
+                    to="/earth-movements"
+                    tabIndex="0"
+                    aria-label="Ir a Movimientos de la Tierra"
+                    className={activeLink === '/earth-movements' ? 'active' : ''}
+                    onClick={() => handleActiveLink('/earth-movements')}
+                >
                     <span>Movimientos de</span>
                     <span> la Tierra</span>
                 </Link>
-                <Link to="/help" tabIndex="0" aria-label="Ir a Ayuda">
+                <Link
+                    to="/help"
+                    tabIndex="0"
+                    aria-label="Ir a Ayuda"
+                    className={activeLink === '/help' ? 'active' : ''}
+                    onClick={() => handleActiveLink('/help')}
+                >
                     Help
                 </Link>
                 <img
@@ -38,16 +77,27 @@ function Header() {
             </nav>
 
             <div className="sesion">
-                <button tabIndex="0" aria-label="Cerrar sesión">
-                    Cerrar sesión
-                    <img
-                        src={images('./sesion-icon.png')}
-                        alt="Ícono de cerrar sesión"
-                        className="sesion-icon"
-                        tabIndex="-1" // Evita que el ícono sea enfocable por separado
-                    />
-                </button>
-            </div>
+            <button
+                tabIndex="0"
+                aria-label="Cerrar sesión"
+                className={activeLink === '/login' ? 'active' : ''}
+                onClick={() => {
+                    handleActiveLink('/login');
+                    // Navegación programática a través de react-router-dom
+                    window.location.href = '/login';
+                }}
+            >
+                Cerrar sesión
+                <img
+                    src={images('./sesion-icon.png')}
+                    alt="Ícono de cerrar sesión"
+                    className="sesion-icon"
+                    tabIndex="-1" // Evita que el ícono sea enfocable por separado
+                />
+            </button>
+        </div>
+
+
         </>
     );
 }
