@@ -14,7 +14,7 @@ function Moon() {
             </header>
             <nav className="menu">
                 <Link to="/login">Huesos y Músculos</Link>
-                <Link to="/login">Fases de la Luna</Link>
+                <Link to="/moon-phases">Fases de la Luna</Link>
                 <Link to="/login">Ciclo del Agua</Link>
                 <Link to="/login">
                     <span>Movimientos de</span>

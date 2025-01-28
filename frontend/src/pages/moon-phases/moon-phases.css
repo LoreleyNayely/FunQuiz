@@ -18,7 +18,7 @@ header img {
 .menu {
     display: flex;
     align-items: center;
-    background: #E9F6EA; /* Fondo aplicado al header */
+    background: #ece9f6; /* Fondo aplicado al header */
 }
 
 nav {

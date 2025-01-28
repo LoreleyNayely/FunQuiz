@@ -2,4 +2,5 @@
 export const ROUTES = {
     LOGIN: "/login",
     MOON: "/moon-phases",
+    WATER: "/water-cycle",
 };
