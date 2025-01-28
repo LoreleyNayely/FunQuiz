@@ -18,7 +18,7 @@ header img {
 .menu {
     display: flex;
     align-items: center;
-    background: #ece9f6; /* Fondo aplicado al header */
+    background: #E9F6EA; /* Fondo aplicado al header */
 }
 
 nav {
@@ -72,6 +72,13 @@ nav a span {
     background-color: #8FADA1; /* Cambio de color en hover */
 }
 
+/* Estilos del botón */
+.sesion-icon {
+    width: 30px; /* Ajusta el tamaño del ícono */
+    height: 30px; /* Ajusta el tamaño del ícono */
+    object-fit: contain; /* Evita que la imagen se distorsione */
+    
+  }
 .game-container {
     display: flex;
     justify-content: space-between;
@@ -185,6 +192,8 @@ ul li:not(.with-bullet) {
     align-items: center;
     padding: 20px;
     font-family: Arial, sans-serif;
+    background-image: url('../../assets/gameFont.png'); /* Ruta de la imagen de fondo */
+    background-size:cover; /* Ajusta la imagen al tamaño del contenedor */
   }
   
   .moon-phases-page h1 {
@@ -192,3 +201,32 @@ ul li:not(.with-bullet) {
     margin-bottom: 20px;
   }
   
+
+  .fullscreen-button {
+    position: absolute;
+    bottom: 5px; /* Cambia 'top' por 'bottom' para colocar abajo */
+    right: 50px;  /* Mantén 'right' para alinearlo a la derecha */
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+    z-index: 100;
+}
+
+.fullscreen-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+.icon {
+    width: 25px;
+    height: 25px;
+    object-fit: contain; /* Evita que la imagen se distorsione */
+
+}

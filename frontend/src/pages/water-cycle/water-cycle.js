@@ -1,150 +1,58 @@
-import React, { useState, useEffect } from "react";
+import Header from '../../components/header';
+import WaterCycleGame from './water-cycle-game/water-cycle-game'; // Importando el componente de juego
+const images = require.context('../../assets', false, /\.(png|jpe?g|svg)$/);
 
-
-const correctMatches = {
-    "evaporacion-part": "evaporacion",
-    "condensacion-part": "condensacion",
-    "precipitacion-part": "precipitacion",
-    "acumulacion-part": "acumulacion",
-  };
-
-  const keyMappings = {
-    "1": "evaporacion-part",
-    "2": "condensacion-part",
-    "3": "precipitacion-part",
-    "4": "acumulacion-part",
-    e: "evaporacion",
-    c: "condensacion",
-    p: "precipitacion",
-    a: "acumulacion",
-  };
-const WaterCycleGame = () => {
-  const [selectedPart, setSelectedPart] = useState(null);
-  const [correctAnswers, setCorrectAnswers] = useState({});
-  const [inSelectionMode, setInSelectionMode] = useState(false);
-
-  
-
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (keyMappings[event.key]) {
-        document.getElementById(keyMappings[event.key]).focus();
-        speak(
-          `Seleccionaste la parte: ${document
-            .getElementById(keyMappings[event.key])
-            .getAttribute("aria-label")}`
-        );
-      }
-
-      if (event.key === "Tab") {
-        event.preventDefault();
-        const focusableElements = inSelectionMode
-          ? document.querySelectorAll(".stage")
-          : document.querySelectorAll(".image-part");
-        let currentIndex = Array.from(focusableElements).indexOf(
-          document.activeElement
-        );
-        let nextIndex = (currentIndex + 1) % focusableElements.length;
-        focusableElements[nextIndex].focus();
-      }
-
-      if ((event.key === " " || event.key === "Enter") && !inSelectionMode) {
-        setInSelectionMode(true);
-        document.querySelectorAll(".stage")[0].focus();
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [inSelectionMode]);
-
-  const speak = (message) => {
-    const speech = new SpeechSynthesisUtterance(message);
-    speech.lang = "es-ES";
-    speech.rate = 1;
-    speech.pitch = 1;
-    window.speechSynthesis.speak(speech);
-  };
-
-  const checkAnswer = (selectedStage) => {
-    if (selectedPart && correctMatches[selectedPart] === selectedStage) {
-      setCorrectAnswers((prev) => ({ ...prev, [selectedStage]: true }));
-      speak("¡Correcto! Has conectado la parte correctamente.");
-      setSelectedPart(null);
-      setInSelectionMode(false);
-    } else {
-      speak("Intenta de nuevo. Usa la tecla Tab para volver a elegir.");
-    }
-  };
-
-  useEffect(() => {
-    if (
-      Object.keys(correctAnswers).length ===
-      Object.keys(correctMatches).length
-    ) {
-      speak(
-        "¡Felicidades! Has conectado todas las partes correctamente. Presiona Enter para volver a intentar."
-      );
-      const handleRestart = (event) => {
-        if (event.key === "Enter") {
-          window.location.reload();
-        }
-      };
-      document.addEventListener("keydown", handleRestart);
-
-      return () => {
-        document.removeEventListener("keydown", handleRestart);
-      };
-    }
-  }, [correctAnswers]);
-
+const WaterCycle = () => {
   return (
     <div>
-      <h1>Ciclo del Agua - Juego Interactivo</h1>
-      <main className="container">
-        <section id="image-container">
-          <img
-            id="image"
-            src="ciclo.png"
-            alt="Diagrama del ciclo del agua mostrando la evaporación, condensación, precipitación y acumulación."
-          />
-          {Object.keys(correctMatches).map((id, index) => (
-            <button
-              key={id}
-              className="image-part"
-              id={id}
-              style={{ top: `${index * 100}px`, left: "60px" }}
-              tabIndex="0"
-              aria-label={`Parte ${index + 1}`}
-              onFocus={() => speak(`Parte ${index + 1}`)}
-              onClick={() => setSelectedPart(id)}
-            >
-              Parte {index + 1}
-            </button>
-          ))}
-        </section>
+            <Header/>
+            <main>
+                <div className="game-container">
+                    <div className="game">
+                        <div className="moon-phases-page">
+                            <WaterCycleGame />
+                        </div>
+                    </div>
+                    
+                    <div class="instructions">
+                        <h2>Instrucciones</h2>
+                        <ul>
+                            <li class="small-spacing with-bullet">Acumulación: Arrastra esta etiqueta hacia el lago o río en la parte inferior de la imagen.</li>
+                            <li class="small-spacing with-bullet">Precipitación: Arrastra esta etiqueta hacia las gotas de lluvia que caen desde las nubes.</li>
+                            <li class="small-spacing with-bullet">Evaporación: Arrastra esta etiqueta hacia las flechas que suben del agua hacia las nubes...</li>
+                        </ul>
+                    </div>
 
-        <section className="stages">
-          {Object.values(correctMatches).map((stage) => (
-            <button
-              key={stage}
-              className="stage"
-              id={stage}
-              tabIndex="0"
-              aria-label={`Opción ${stage}`}
-              onFocus={() => speak(`Opción ${stage}`)}
-              onClick={() => checkAnswer(stage)}
-            >
-              {stage.charAt(0).toUpperCase() + stage.slice(1)}
-            </button>
-          ))}
-        </section>
-      </main>
-    </div>
+                </div>
+
+                <div className="related-content">
+                    <h2>Más contenido relacionado</h2>
+                    <div className="related-items">
+                        <div className="related-item">
+                            <a href="https://view.genially.com/648654c5774f910012dc8587/presentation-movimientos-y-fases-de-la-luna" target="_blank" rel="noopener noreferrer">
+                                <img src={images('./water1.png')} alt="Relacionado 1" />
+                            </a>
+                        </div>
+                        <div className="related-item">
+                            <a href="https://view.genially.com/648654c5774f910012dc8587/presentation-movimientos-y-fases-de-la-luna" target="_blank" rel="noopener noreferrer">
+                                <img src={images('./water2.png')} alt="Relacionado 2" />
+                            </a>
+                        </div>
+                        <div className="related-item">
+                            <a href="https://view.genially.com/648654c5774f910012dc8587/presentation-movimientos-y-fases-de-la-luna" target="_blank" rel="noopener noreferrer">
+                                <img src={images('./water3.png')} alt="Relacionado 3" />
+                            </a>
+                        </div>
+                        <div className="related-item">
+                            <a href="https://www.youtube.com/watch?v=ma0kKMc9PbE" target="_blank" rel="noopener noreferrer">
+                                <img src={images('./water4.png')} alt="Relacionado 4" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
   );
 };
 
-export default WaterCycleGame;
+export default WaterCycle;

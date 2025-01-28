@@ -1,31 +1,37 @@
-body {
+.water-cycle {
     font-family: Arial, sans-serif;
     text-align: center;
     background-color: #87CEEB;
 }
-h1 {
+
+.water-cycle h1 {
     color: #ffffff;
     font-size: 2em;
 }
-.container {
+
+.water-cycle .container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
     gap: 20px;
 }
-#image-container {
+
+.water-cycle #image-container {
     position: relative;
     max-width: 800px;
 }
-.highlight {
+
+.water-cycle .highlight {
     border: 3px solid orange;
 }
-.stages {
+
+.water-cycle .stages {
     display: flex;
     flex-direction: column;
 }
-.stage {
+
+.water-cycle .stage {
     margin: 10px;
     padding: 15px;
     width: 250px;
@@ -38,15 +44,18 @@ h1 {
     background-color: white;
     transition: background-color 0.3s, transform 0.3s;
 }
-.stage:focus {
+
+.water-cycle .stage:focus {
     border: 2px solid #ff4500;
     background-color: #f0f0f0;
 }
-.correct {
+
+.water-cycle .correct {
     background-color: lightgreen;
     transform: scale(1.05);
 }
-.image-part {
+
+.water-cycle .image-part {
     position: absolute;
     width: 100px;
     height: 100px;
