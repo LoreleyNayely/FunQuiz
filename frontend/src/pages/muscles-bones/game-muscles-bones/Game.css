@@ -147,7 +147,7 @@
 	background-color: #218838;
   }
   
-  ..overlay-screen {
+  .overlay-screen {
 	position: absolute;
 	top: 0;
 	left: 0;
