@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../../components/header';
 import Game from './game-muscles-bones/Game'; 
 import { FaPause, FaPlay, FaRedo, FaArrowUp,FaArrowDown} from 'react-icons/fa';
+import './muscles-bones.css';
 
 const images = require.context('../../assets', false, /\.(png|jpe?g|svg)$/);
 

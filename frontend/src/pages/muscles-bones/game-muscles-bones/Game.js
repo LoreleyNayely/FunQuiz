@@ -24,7 +24,7 @@ const Game = () => {
     { id: 10, name: 'Trapecio', side: 'left' },
   ]);
 
-  const [timer, setTimer] = useState(60);
+  const [timer, setTimer] = useState(360);
   const [paused, setPaused] = useState(false);
   const [feedback, setFeedback] = useState('');
   const [showPopup, setShowPopup] = useState(false); 
@@ -122,9 +122,9 @@ const Game = () => {
 	}, [paused, gameOver]);
 
   useEffect(() => {
-	const handleKeyDown = (e) => {
-	if (gameOver) return;
-
+    const handleKeyDown = (e) => {
+      if (gameOver) return;
+  
       switch (e.key) {
         case 'ArrowUp':
           handleSelectLabel('up');
@@ -133,38 +133,37 @@ const Game = () => {
           handleSelectLabel('down');
           break;
         case 'Enter':
-			if (!hasStarted) {
-				handleStart(); 
-			  } else {
-				handleDropLabel();
-			  }
-			break;
-		  case 'p':
-			case 'P':
-			  setPaused(true);
-			  setFeedback('Juego pausado. Presiona Continuar para seguir jugando.');
-			  setShowPopup(true); 
-			  break;
-			case 'c':
-			case 'C':
-			  setPaused(false);
-			  setFeedback('Continua Jugando! 🎮😊');
-			  setShowPopup(true);
-			  break;
-			case 'r':
-			case 'R':
-			  window.location.reload();
-			  break;
-			default:
-			  break;
-		  }
-		};
-
+          if (!hasStarted) {
+            handleStart();
+          } else {
+            handleDropLabel();
+          }
+          break;
+        case 'p':
+        case 'P':
+          setPaused(true);
+          setFeedback('Juego pausado. Presiona Continuar para seguir jugando.');
+          setShowPopup(true);
+          break;
+        case 'c':
+        case 'C':
+          setPaused(false);
+          setFeedback('Continua Jugando! 🎮😊');
+          setShowPopup(true);
+          break;
+        case 'r':
+        case 'R':
+          window.location.reload();
+          break;
+        default:
+          break;
+      }
+    };
+  
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedLabelIndex, currentPointIndex, paused, labels, gameOver]);
-
-  
+  }, [handleDropLabel, handleSelectLabel, handleStart, hasStarted, selectedLabelIndex, currentPointIndex, paused, labels, gameOver]);
+    
 
   return (
     <div className="game">
@@ -183,13 +182,13 @@ const Game = () => {
             <div className="timer" tabIndex="0">⏱️ Tiempo: {timer}s</div>
 			<p className="indicator"tabIndex="0">Selecciona la etiqueta para el punto: {currentPointIndex + 1}</p>
           </div>
-          {showPopup && <div className="feedback-popup" tabIndex="0">{feedback} </div>} {/* Pop-up momentáneo */}
+          {showPopup && <div className="feedback-popup" tabIndex="0">{feedback} </div>} {}
 		  <div
     aria-live="assertive"
     role="alert"
     style={{
       position: 'absolute',
-      left: '-9999px', // Oculta visualmente pero accesible para screen readers
+      left: '-9999px', 
     }}
   >
     {labels[selectedLabelIndex]?.name}
