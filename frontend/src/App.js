@@ -6,6 +6,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/login/login';
 import Moon from './pages/moon-phases/moon-phases';
 import WaterCycleGame from './pages/water-cycle/water-cycle';
+import Game from './pages/muscles-bones/muscles-bones';
 import { ROUTES } from './routes'; // Importa las rutas definidas
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path={ROUTES.LOGIN} element={<Login />} />
         <Route path={ROUTES.MOON} element={<Moon />} />
         <Route path={ROUTES.WATER} element={<WaterCycleGame />} />
+        <Route path={ROUTES.MUSCLES} element={<Game />} />
         {/* Ruta 404 */}
         <Route path="*" element={<h1>404 - Página no encontrada</h1>} />
       </Routes>

@@ -1,14 +1,18 @@
-// index.js
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App'; // Aquí solo se importa App.js
 
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
-// Renderiza el componente App que contiene las rutas
-ReactDOM.render(
-  <BrowserRouter>
-    <App /> {/* El enrutamiento y las rutas están en App */}
-  </BrowserRouter>,
-  document.getElementById('root')
+root.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
 );
+
+// Medición de rendimiento (opcional)
+reportWebVitals();

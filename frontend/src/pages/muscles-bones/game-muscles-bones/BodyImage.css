@@ -1,0 +1,64 @@
+.body-container {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  
+  .body-image {
+	width: 300px;
+	height: auto;
+	position: relative;
+  }
+  
+  .drop-point {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: rgba(255, 0, 0, 0.7);
+	position: absolute;
+	cursor: pointer;
+	transform: translate(-50%, -50%);
+  }
+  
+  .drop-point {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: rgba(255, 0, 0, 0.7);
+	position: absolute;
+	cursor: pointer;
+	transform: translate(-50%, -50%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  
+  .popup {
+	position: absolute;
+	top: -40px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: rgba(0, 0, 0, 0.8);
+	color: white;
+	padding: 8px;
+	border-radius: 8px;
+	font-size: 12px;
+	text-align: center;
+	white-space: nowrap;
+	z-index: 10;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .drop-point:focus .popup,
+  .drop-point:hover .popup {
+	display: block;
+  }
+  
+  .point-number {
+	font-size: 12px;
+	color: white;
+	font-weight: bold;
+	z-index: 5;
+  }
+  

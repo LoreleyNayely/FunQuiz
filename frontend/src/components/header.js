@@ -24,11 +24,11 @@ function Header() {
 
             <nav className="menu">
                 <Link
-                    to="/login"
+                    to="/muscles-bones"
                     tabIndex="0"
                     aria-label="Ir a Huesos y Músculos"
-                    className={activeLink === '/login' ? 'active' : ''}
-                    onClick={() => handleActiveLink('/login')}
+                    className={activeLink === '/muscles-bones' ? 'active' : ''}
+                    onClick={() => handleActiveLink('/muscles-bones')}
                 >
                     Huesos y Músculos
                 </Link>

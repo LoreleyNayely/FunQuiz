@@ -1,0 +1,19 @@
+.label-item {
+	padding: 10px;
+	margin: 5px;
+	background-color: hsla(25, 40%, 75%, 0.458);
+	border-radius: 5px;
+	cursor: pointer;
+	text-align: center;
+	transition: background-color 0.2s ease;
+  }
+  
+  .label-item.selected {
+	background-color: #4caf50;
+	color: white;
+  }
+  
+  .label-item:hover {
+	background-color: #ccc;
+  }
+  
