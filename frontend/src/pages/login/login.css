@@ -1,170 +1,90 @@
-/* Estilo global para eliminar márgenes y hacer que el diseño ocupe toda la pantalla */
+/* login.css */
 
-@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
-
-
-body, html {
-    margin: 0;
-    padding: 0;
+/* Estilo general del contenedor */
+body, .container {
+    font-family: 'Itim', sans-serif;
+  }
+  
+.container {
+    position: relative;
     width: 100%;
-    height: 100%;
-    font-family: 'Itim', cursive;
-    background-color: #ffffff;
-
-}
-
-/* Contenedor principal que ocupa toda la pantalla */
-.full-screen {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; 
-    align-items: center;
-    height: 100vh; 
-    box-sizing: border-box;
-    background-color: #ffffff;
-    padding: 20px; 
-}
-
-/* Estilo del logo */
-.logo {
-    width: 100%; 
-    margin: 0; 
-    padding: 0; 
-    text-align: center;
-}
-
-.logo img {
-    width: 100%; 
-    max-width: 500px; 
-    margin: 0; 
-     
-}
-
-/* Estilos del formulario */
-.form-group {
-    display: flex;
-    align-items: center; /* Alinea verticalmente los elementos */
-    margin-bottom: 15px;
-    gap: 60px;
-}
-
-.form-group label {
-    flex: 0 0 100px; /* Mantiene el tamaño del texto ajustado a su contenido */
-    display: block;
-    text-align: left;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.form-group input {
-    flex: 1; 
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 50px;
-    box-sizing: border-box;
-}
-
-/* Botón principal */
-.btn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 16px;
-    width: 50%;
-    max-width: 300px;
-    display: block; /* Asegura que el botón sea un elemento de bloque */
-    text-align: center; 
-    margin: 30px auto 10px auto; /* Centra el botón horizontalmente */
-    font-family: 'Itim', cursive;
-
-}
-
-.btn:hover {
-    background-color: #45a049;
-}
-
-.forgot-password {
-    text-align: center;
-}
-
-.forgot-password a {
-    color: #007BFF;
-    text-decoration: none;
-}
-
-.forgot-password a:hover {
-    text-decoration: underline;
-}
-
-.register-links {
-    display: flex;
-    flex-direction: column; /* Cambia a columna para que cada enlace esté en una nueva línea */
-    justify-content: flex-end;
-    align-items: flex-end; /* Alinea los enlaces a la derecha */
-    margin-top: 50px;
-    width: 100%;
-    max-width: 300px;
-    margin-left: 100px;
-}
-
-.register-links a {
-    color: #007BFF;
-    text-decoration: none;
-}
-
-.register-links a:hover {
-    text-decoration: underline;
-}
-
-/* Botones para inicio de sesión social */
-.social-login {
+    height: 100vh;
     display: flex;
     justify-content: center;
-    gap: 90px; /* Espaciado entre los botones */
-    margin-top: 20px;
-}
+    align-items: center;
+    overflow: hidden;
+    font-family: 'Itim';
 
-.social-item {
-    display: flex;
-    align-items: center; /* Alinea verticalmente la imagen y el botón */
-    gap: 0px; /* Espaciado entre la imagen y el botón */
-}
+  }
+  
+  .header-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Estilo para la tarjeta superpuesta */
+  .overlay-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    z-index: 10;
+    animation: fadeIn 0.5s ease-in-out;
+    font-size: 18px;
 
-.social-item img {
-    width: 20px; /* Tamaño de la imagen (ajusta según tus necesidades) */
-    height: 20px; /* Asegúrate de que las imágenes sean cuadradas */
-}
-
-.social-login button {
-    flex: 1; /* Asegura que los botones tengan el mismo tamaño */
+  }
+  
+  /* Estilo para el contenido dentro de la tarjeta */
+  .card-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #000000;
+  }
+  
+  .card-content p {
+    margin-bottom: 15px;
+    color: #000000;
+  }
+  
+  .username-input {
+    width: 100%;
     padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  
+  .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
-    font-family: 'Itim', cursive;
+    font-size: 1rem;
     cursor: pointer;
-    white-space: nowrap
-}
-
-.social-login .facebook {
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
-}
-
-.social-login .google {
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
-}
-
-.social-login .facebook:hover {
-    background-color: #bdbdbd;
-}
-
-.social-login .google:hover {
-    background-color: #bdbdbd;
-}
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #45a049;
+  }
+  
+  /* Animación de aparición */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  

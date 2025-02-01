@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './login.css';
 import { Link } from 'react-router-dom';
 
@@ -6,53 +6,71 @@ import { Link } from 'react-router-dom';
 const images = require.context('../../assets', false, /\.(png|jpe?g|svg)$/);
 
 function Login() {
+  const [showCard, setShowCard] = useState(false);
+  const [username, setUsername] = useState('');
+  const [showError, setShowError] = useState(false);
+
+  useEffect(() => {
+    // Mostrar la tarjeta después de un segundo
+    const timer = setTimeout(() => {
+      setShowCard(true);
+    }, 1000);
+
+    return () => clearTimeout(timer); // Limpiar el temporizador si el componente se desmonta
+  }, []);
+
+  const handleLogin = () => {
+    if (!username.trim()) {
+      setShowError(true);
+      setTimeout(() => {
+        document.getElementById("username-input").focus();
+      }, 100); // Breve retraso para asegurar que el mensaje de error sea leído primero
+    } else {
+      setShowError(false);
+      window.location.href = '/moon-phases';
+    }
+  };
+
   return (
     <div className="container full-screen">
-      <div className="logo">
-        <img src={images('./funquiz_login.png')} alt="FunQuiz Academy Logo" />
+      <div className="header-image" tabIndex={1}>
+        <img 
+          src={images('./Login3.png')} 
+          alt="FunQuiz Academy Logo" 
+          aria-label="Logo de FunQuiz Academy"
+        />
       </div>
-      <form>
-        <div className="form-group">
-          <label htmlFor="username">Usuario:</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            placeholder="Ingrese su usuario"
-          />
+      {showCard && (
+        <div className="overlay-card" tabIndex={2}>
+          <div className="card-content">
+            <h2 tabIndex={3}>Bienvenido a FunQuiz</h2>
+            <p tabIndex={4}>Por favor, ingresa un nombre de usuario para poder continuar:</p>
+            {showError && (
+              <p className="error-message" aria-live="assertive" tabIndex={5}>
+                Ingresa un nombre de usuario.
+              </p>
+            )}
+            <input
+              id="username-input"
+              type="text"
+              placeholder="Nombre de usuario"
+              className="username-input"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              tabIndex={6}
+              aria-label="Campo para ingresar nombre de usuario"
+            />
+            <button
+              type="button"
+              className="btn"
+              onClick={handleLogin}
+              tabIndex={7}
+            >
+              Ingresar
+            </button>
+          </div>
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Contraseña:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Ingrese su contraseña"
-          />
-        </div>
-        <Link to="/moon-phases">
-          <button type="button" className="btn">
-            Ingresar
-          </button>
-        </Link>
-      </form>
-      <div className="forgot-password">
-      <Link to="/moon-phases">¿Olvidaste la contraseña?</Link>
-      </div>
-      <div className="register-links">
-        <Link to="/moon-phases">¿No tienes cuenta?</Link>
-        <Link to="/moon-phases">Regístrate</Link>
-      </div>
-      <div className="social-login">
-        <div className="social-item">
-          <img src={images('./facebook.png')} alt="Logo Facebook" />
-          <button className="facebook">Registrarse con Facebook</button>
-        </div>
-        <div className="social-item">
-          <img src={images('./gmail.png')} alt="Logo Gmail" />
-          <button className="google">Registrarse con Gmail</button>
-        </div>
-      </div>
+      )}
     </div>
   );
 }
