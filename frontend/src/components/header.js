@@ -51,11 +51,11 @@ function Header() {
                     Ciclo del Agua
                 </Link>
                 <Link
-                    to="/earth-movements"
+                    to="/EarthMovementGame"
                     tabIndex="0"
                     aria-label="Ir a Movimientos de la Tierra"
-                    className={activeLink === '/earth-movements' ? 'active' : ''}
-                    onClick={() => handleActiveLink('/earth-movements')}
+                    className={activeLink === '/EarthMovementGame' ? 'active' : ''}
+                    onClick={() => handleActiveLink('/EarthMovementGame')}
                 >
                     <span>Movimientos de</span>
                     <span> la Tierra</span>

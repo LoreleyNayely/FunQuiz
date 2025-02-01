@@ -1,0 +1,93 @@
+/* Estilos generales para la sección */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+  }
+  
+  /* Contenedor principal */
+  .help-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Título de la sección */
+  .help-container h1 {
+    font-size: 24px;
+    color: #333333;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo de cada pregunta */
+  .faq-item {
+    margin-bottom: 10px;
+    background-color: #e8f5e9;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid #d4e2d4;
+  }
+  
+  .faq-item:hover {
+    background-color: #d4e2d4;
+  }
+  
+  /* Pregunta principal */
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    color: #333333;
+  }
+  
+  /* Respuesta colapsable */
+  .faq-answer {
+    margin-top: 10px;
+    background-color: #c8e6c9;
+    border-radius: 5px;
+    padding: 10px;
+    color: #333333;
+  }
+  
+  /* Formulario para agregar nuevas preguntas */
+  .add-question-form {
+    margin-top: 30px;
+  }
+  
+  .add-question-form h2 {
+    font-size: 20px;
+    color: #333333;
+    margin-bottom: 10px;
+  }
+  
+  .add-question-form input,
+  .add-question-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+  
+  .add-question-form button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-question-form button:hover {
+    background-color: #45a049;
+  }
+  
