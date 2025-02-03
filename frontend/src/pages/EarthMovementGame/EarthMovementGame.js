@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import Header from '../../components/header';
 import { FaPause, FaPlay, FaRedo, FaArrowUp, FaArrowDown } from 'react-icons/fa';
 import './EarthMovementGame.css';
+const images = require.context('../../assets', false, /\.(png|jpe?g|svg)$/);
 
 const questions = [
   {
@@ -85,6 +86,7 @@ function EarthMovementGame() {
       <Header />
       <main>
         <div className="game-container">
+  
           <div className="game-area">
             <h1 tabIndex={0}>Juego: Movimientos de la Tierra</h1>
             <div className="card-grid">
@@ -137,12 +139,12 @@ function EarthMovementGame() {
               )}
             </div>
           </div>
-
+        
           {/* Instrucciones al lado del juego */}
 
 
     <div className="instructions" tabIndex="0" aria-label="Instrucciones del juego">
-    <h2>Instrucciones del Juego</h2>
+    <h2>Instrucciones</h2>
     <ul>
         <li className="small-spacing with-bullet">Usa las teclas de flecha <FaArrowUp /> <FaArrowDown /> para moverte entre las tarjetas.</li>
         <li className="small-spacing with-bullet">Presiona Enter o Espacio para seleccionar una tarjeta.</li>
@@ -156,52 +158,70 @@ function EarthMovementGame() {
 
         <div className="related-content">
                     <h2>Más contenido relacionado</h2>
-
                     <div className="related-items">
-                        <div className="related-item">
-                            <a
-                               
-                            >
-                                <img
-                                    
-                                />
-                            </a>
-                        </div>
-                        <div className="related-item">
-                            <a
-                           
-                            >
-                                <img
-                                 
-                                />
-                            </a>
-                        </div>
-                        <div className="related-item">
-                            <a
-                                
-                            >
-                                <img
-                                  
-                                />
-                            </a>
-                        </div>
-                        <div className="related-item">
-                            <a
-                                
-                            >
-                                <img
-                                   
-                                />
-                            </a>
-                        </div>
+                    <div className="related-item">
+                        <a
+                            href="https://www.youtube.com/watch?v=6Ey_qqjjv5s"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            tabIndex="0"
+                            aria-label="Enlace a video sobre la traslación y rotación de la Tierra"
+                        >
+                            <img
+                                src={images('./earth1.png')}
+                                alt="Video sobre la traslación y rotación de la Tierra"
+                                tabIndex="-1" // Evita que la imagen sea enfocable
+                            />
+                        </a>
                     </div>
-
-
-                  </div>
-
-
-        
-      </main>
+                    <div className="related-item">
+                        <a
+                            href="https://www.youtube.com/watch?v=RRLMBbt778A"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            tabIndex="0"
+                            aria-label="Enlace a video sobre las estaciones del año"
+                        >
+                            <img
+                                src={images('./earth2.png')}
+                                alt="Video sobre las estaciones del año"
+                                tabIndex="-1" // Evita que la imagen sea enfocable
+                            />
+                        </a>
+                    </div>
+                    <div className="related-item">
+                        <a
+                            href="https://www.youtube.com/watch?v=ecsTOP8A1BU"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            tabIndex="0"
+                            aria-label="Enlace a video sobre el día y la noche"
+                        >
+                            <img
+                                src={images('./earth3.png')}
+                                alt="Video sobre el día y la noche"
+                                tabIndex="-1" // Evita que la imagen sea enfocable
+                            />
+                        </a>
+                    </div>
+                    <div className="related-item">
+                        <a
+                            href="https://www.youtube.com/watch?v=ZykXgSqet6A"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            tabIndex="0"
+                            aria-label="Enlace a video sobre el Sistema Solar"
+                        >
+                            <img
+                                src={images('./earth4.png')}
+                                alt="Video explicativo sobre el Sistema Solar"
+                                tabIndex="-1" // Evita que la imagen sea enfocable
+                            />
+                        </a>
+                    </div>
+                    </div>
+                </div>
+            </main>
     </div>
   );
 }

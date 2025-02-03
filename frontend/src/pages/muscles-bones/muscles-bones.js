@@ -22,7 +22,7 @@ const MusclesBones = () => {
           {/* Instrucciones del juego */}
 
     <div className="instructions" tabIndex="0" aria-label="Instrucciones del juego">
-        <h2 className="small-spacing with-bullet">Instrucciones del Juego</h2>
+        <h2>Instrucciones</h2>
         <p className="small-spacing with-bullet" tabIndex="0">Usa las teclas de flecha <FaArrowUp /> <FaArrowDown /> para moverte entre las etiquetas.</p>
         <p className="small-spacing with-bullet" tabIndex="0">Presiona Enter para seleccionar una etiqueta y ubicarla en el punto correcto.</p>
         <p className="small-spacing with-bullet" tabIndex="0">Presiona "P" <FaPause /> para pausar y "C" <FaPlay /> para continuar.</p>

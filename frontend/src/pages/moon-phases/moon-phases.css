@@ -28,7 +28,7 @@ nav {
 nav a {
     text-decoration: none;
     color: #333;
-    padding: 40px 60px;
+    padding: 30px 50px;
     transition: background-color 0.3s;
 }
 
@@ -111,7 +111,10 @@ nav a span {
     line-height: 1.5;
     margin-right: 20px;
     margin-left: 25px;
+    max-height: 500px; /* Ajusta la altura máxima según tus necesidades */
+    overflow-y: auto; /* Esto permitirá que el contenido se desplace si excede el máximo */
 }
+
 .instructions h2 {
     margin-top: 0px;
     font-family: 'Jersey';
@@ -216,31 +219,4 @@ ul li:not(.with-bullet) {
   }
   
 
-  .fullscreen-button {
-    position: absolute;
-    bottom: 5px; /* Cambia 'top' por 'bottom' para colocar abajo */
-    right: 50px;  /* Mantén 'right' para alinearlo a la derecha */
-    background-color: rgba(0, 0, 0, 0.5);
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    color: white;
-    z-index: 100;
-}
 
-.fullscreen-button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-
-.icon {
-    width: 25px;
-    height: 25px;
-    object-fit: contain; /* Evita que la imagen se distorsione */
-
-}

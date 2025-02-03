@@ -2,41 +2,14 @@ import React, { useState } from 'react';
 import './moon-phases.css';
 import Maze from '../moon-phases/moon-game/maze';
 import Timer from '../moon-phases/moon-game/timer';
+import Controls from '../moon-phases/moon-game/controls';
 import Header from '../../components/header';
 
 const images = require.context('../../assets', false, /\.(png|jpe?g|svg)$/);
 
 function Moon() {
+    const [isSoundOn, setIsSoundOn] = useState(true);
     const [isFullscreen, setIsFullscreen] = useState(false);
-
-    const toggleFullscreen = () => {
-        const element = document.querySelector('.moon-phases-page');
-        if (!isFullscreen) {
-            // Entrar en modo pantalla completa
-            if (element.requestFullscreen) {
-                element.requestFullscreen();
-            } else if (element.webkitRequestFullscreen) {
-                element.webkitRequestFullscreen();
-            } else if (element.mozRequestFullScreen) {
-                element.mozRequestFullScreen();
-            } else if (element.msRequestFullscreen) {
-                element.msRequestFullscreen();
-            }
-        } else {
-            // Salir del modo pantalla completa
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.webkitExitFullscreen) {
-                document.webkitExitFullscreen();
-            } else if (document.mozCancelFullScreen) {
-                document.mozCancelFullScreen();
-            } else if (document.msExitFullscreen) {
-                document.msExitFullscreen();
-            }
-        }
-        setIsFullscreen(!isFullscreen); // Alternar el estado
-    };
-
 
     return (
         <div>
@@ -46,20 +19,15 @@ function Moon() {
                 <div className="game-container">
                     <div className="game">
                         <div className="moon-phases-page" tabIndex="0">
-
-                            <button className="fullscreen-button" onClick={toggleFullscreen} title={isFullscreen ? "Salir de pantalla completa" : "Pantalla completa"}>
-                                {isFullscreen ? <img
-                                                    src={images('./normalscreen-icon.png')}
-                                                    alt="Presentación interactiva sobre las fases de la Luna"
-                                                    tabIndex="0" // Evita que la imagen sea enfocable
-                                                className="icon" /> : <img
-                                                    src={images('./fullscreen-icon.png')}
-                                                    alt="Presentación interactiva sobre las fases de la Luna"
-                                                    tabIndex="-1" // Evita que la imagen sea enfocable
-                                                className="icon" />}
-                                 </button>
                             <Timer />
                             <Maze />
+                            <Controls
+                                isSoundOn={isSoundOn}
+                                setIsSoundOn={setIsSoundOn}
+                                isFullscreen={isFullscreen}
+                                setIsFullscreen={setIsFullscreen}
+                                containerClass="game" 
+                            />
                         </div>
                     </div>
 

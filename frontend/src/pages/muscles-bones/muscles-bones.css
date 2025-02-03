@@ -6,6 +6,14 @@
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    font-family: Arial, sans-serif;
+    font-family: 'Kaisei HarunoUmi';
     background-color: black;   
   }
+  .instructions p {
+    font-family: 'Kaisei HarunoUmi';
+    font-size: 100%;
+    list-style-type: none;
+    padding-left: 0; /* Elimina el padding izquierdo para evitar que los elementos se desalineen */
+    margin: 0; /* Elimina los márgenes por defecto de la lista */
+    text-align: center; /* Centra el contenido de la lista */
+}

@@ -2,7 +2,11 @@
 
   /* Zona del juego */
   .game-area {
-    width: 60%;
+    width: 70%;
+    background-color: #000;
+    overflow: hidden;
+    position: relative;
+    margin-left: 20px;
     background: #000000;
     padding: 20px;
     border-radius: 10px;

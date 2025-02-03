@@ -16,7 +16,7 @@ const WaterCycle = () => {
                     
                                     
                 <div className="instructions" tabIndex="0" aria-label="Instrucciones del juego">
-                    <h2 className="small-spacing with-bullet">Instrucciones</h2>
+                    <h2>Instrucciones</h2>
                     <ul>
                         <li className="small-spacing with-bullet">Acumulación: Arrastra esta etiqueta hacia el lago o río en la parte inferior de la imagen.</li>
                         <li className="small-spacing with-bullet">Precipitación: Arrastra esta etiqueta hacia las gotas de lluvia que caen desde las nubes.</li>

@@ -61,7 +61,7 @@
 	justify-content: center;
   }
   
-  button {
+  .game-muscle button{
 	padding: 10px 20px;
 	background-color: #8ab6d3;
 	color: black;

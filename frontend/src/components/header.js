@@ -70,8 +70,8 @@ function Header() {
                 >
                     Ayuda
                 </Link>
-                <p tabIndex="0" aria-label={`Hola, ${username}!`}>
-                    ¡Hola {username}!
+                <p tabIndex="0" aria-label={`Hola ${username}!`}>
+                    ¡Hola, {username}!
                 </p>
                 <img
                     src={images('./jpoa.png')}
