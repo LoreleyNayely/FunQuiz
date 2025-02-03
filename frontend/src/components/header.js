@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 const images = require.context('../assets', false, /\.(png|jpe?g|svg)$/);
 
 function Header() {
+    const username = localStorage.getItem('username'); 
     const location = useLocation(); // Detecta la ruta actual
     const [activeLink, setActiveLink] = useState(location.pathname); // Estado para rastrear la opción activa
 
@@ -67,8 +68,11 @@ function Header() {
                     className={activeLink === '/help' ? 'active' : ''}
                     onClick={() => handleActiveLink('/help')}
                 >
-                    Help
+                    Ayuda
                 </Link>
+                <p tabIndex="0" aria-label={`Hola, ${username}!`}>
+                    ¡Hola {username}!
+                </p>
                 <img
                     src={images('./jpoa.png')}
                     alt="Avatar del usuario"

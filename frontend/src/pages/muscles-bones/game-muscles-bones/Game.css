@@ -1,4 +1,4 @@
-.game {
+.game-muscle {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -51,15 +51,6 @@
 	z-index: 10;    
   }
   
-  .instructions {
-	left: 70px;
-	right: 20px;
-	top: 20px;
-	background-color: rgba(113, 198, 226, 0.77);
-	padding: 10px;
-	border-radius: 10px;
-	color: white;
-  }
   .controls {
 	position: absolute;
 	bottom: 20px;
@@ -124,14 +115,7 @@
   }
 
   
-  .instructions h2 {
-	font-size: 18px;
-	margin-bottom: 10px;
-  }
-  
-  .instructions p {
-	font-size: 14px;
-  }
+
 
 
 .play-button {

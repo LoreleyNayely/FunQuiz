@@ -3,10 +3,10 @@ import './water-cycle-game.css';
 
 const images = require.context('../../../assets', false, /\.(png|jpe?g|svg)$/);
 const correctMatches = {
-    "evaporacion-part": "evaporacion",
-    "condensacion-part": "condensacion",
-    "precipitacion-part": "precipitacion",
-    "acumulacion-part": "acumulacion",
+    "evaporacion-part": "evaporación",
+    "condensacion-part": "condensación",
+    "precipitacion-part": "precipitación",
+    "acumulacion-part": "acumulación",
   };
 
   const keyMappings = {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './login.css';
-import { Link } from 'react-router-dom';
+
 
 // Usamos require.context para importar todas las imágenes de la carpeta 'assets'
 const images = require.context('../../assets', false, /\.(png|jpe?g|svg)$/);
@@ -27,7 +27,8 @@ function Login() {
       }, 100); // Breve retraso para asegurar que el mensaje de error sea leído primero
     } else {
       setShowError(false);
-      window.location.href = '/moon-phases';
+      localStorage.setItem('username', username); // Store the username
+      window.location.href = '/muscles-bones';
     }
   };
 

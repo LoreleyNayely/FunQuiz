@@ -8,20 +8,22 @@ const WaterCycle = () => {
             <Header/>
             <main>
                 <div className="game-container">
-                    <div className="game">
-                        <div className="moon-phases-page">
+                    <div className="water-game">
+                        <div className="water-page">
                             <WaterCycleGame />
                         </div>
                     </div>
                     
-                    <div class="instructions">
-                        <h2>Instrucciones</h2>
-                        <ul>
-                            <li class="small-spacing with-bullet">Acumulación: Arrastra esta etiqueta hacia el lago o río en la parte inferior de la imagen.</li>
-                            <li class="small-spacing with-bullet">Precipitación: Arrastra esta etiqueta hacia las gotas de lluvia que caen desde las nubes.</li>
-                            <li class="small-spacing with-bullet">Evaporación: Arrastra esta etiqueta hacia las flechas que suben del agua hacia las nubes...</li>
-                        </ul>
-                    </div>
+                                    
+                <div className="instructions" tabIndex="0" aria-label="Instrucciones del juego">
+                    <h2 className="small-spacing with-bullet">Instrucciones</h2>
+                    <ul>
+                        <li className="small-spacing with-bullet">Acumulación: Arrastra esta etiqueta hacia el lago o río en la parte inferior de la imagen.</li>
+                        <li className="small-spacing with-bullet">Precipitación: Arrastra esta etiqueta hacia las gotas de lluvia que caen desde las nubes.</li>
+                        <li className="small-spacing with-bullet">Evaporación: Arrastra esta etiqueta hacia las flechas que suben del agua hacia las nubes...</li>
+                    </ul>
+                </div>
+
 
                 </div>
 

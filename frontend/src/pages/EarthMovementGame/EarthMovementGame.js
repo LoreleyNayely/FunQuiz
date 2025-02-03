@@ -139,16 +139,19 @@ function EarthMovementGame() {
           </div>
 
           {/* Instrucciones al lado del juego */}
-          <div className="instructions">
-            <h2 tabIndex="0">Instrucciones del Juego</h2>
-            <p tabIndex="0">
-              Usa las teclas de flecha <FaArrowUp /> <FaArrowDown /> para moverte entre las tarjetas.
-            </p>
-            <p tabIndex="0">Presiona Enter o Espacio para seleccionar una tarjeta.</p>
-            <p tabIndex="0">Presiona "P" <FaPause /> para pausar y "C" <FaPlay /> para continuar.</p>
-            <p tabIndex="0">Presiona "R" <FaRedo /> para reiniciar el juego.</p>
-            <p tabIndex="0">Navega con la tecla <strong>Tab</strong> para interactuar.</p>
-          </div>
+
+
+    <div className="instructions" tabIndex="0" aria-label="Instrucciones del juego">
+    <h2>Instrucciones del Juego</h2>
+    <ul>
+        <li className="small-spacing with-bullet">Usa las teclas de flecha <FaArrowUp /> <FaArrowDown /> para moverte entre las tarjetas.</li>
+        <li className="small-spacing with-bullet">Presiona Enter o Espacio para seleccionar una tarjeta.</li>
+        <li className="small-spacing with-bullet">Presiona "P" <FaPause /> para pausar y "C" <FaPlay /> para continuar.</li>
+        <li className="small-spacing with-bullet">Presiona "R" <FaRedo /> para reiniciar el juego.</li>
+        <li className="small-spacing with-bullet">Navega con la tecla <strong>Tab</strong> para interactuar.</li>
+    </ul>
+</div>
+
         </div>
 
         <div className="related-content">

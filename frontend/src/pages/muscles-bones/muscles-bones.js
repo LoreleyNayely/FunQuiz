@@ -20,14 +20,15 @@ const MusclesBones = () => {
           </div>
 
           {/* Instrucciones del juego */}
-		  <div className="instructions">
-				<h2 tabIndex="0">Instrucciones del Juego </h2>
-				<p tabIndex="0">Usa las teclas de flecha <FaArrowUp /> <FaArrowDown /> para moverte entre las etiquetas.</p>
-				<p tabIndex="0">Presiona Enter para seleccionar una etiqueta y ubicarla en el punto correcto.</p>
-				<p tabIndex="0">Presiona "P" <FaPause /> para pausar y "C" <FaPlay /> para continuar.</p>
-				<p tabIndex="0">Presiona "R" <FaRedo /> para reiniciar el juego.</p>
-				<p tabIndex="0">Si necesitas ayuda, puedes encontrar pistas navegando con la tecla <strong>Tab</strong>.</p>
-			  </div>
+
+    <div className="instructions" tabIndex="0" aria-label="Instrucciones del juego">
+        <h2 className="small-spacing with-bullet">Instrucciones del Juego</h2>
+        <p className="small-spacing with-bullet" tabIndex="0">Usa las teclas de flecha <FaArrowUp /> <FaArrowDown /> para moverte entre las etiquetas.</p>
+        <p className="small-spacing with-bullet" tabIndex="0">Presiona Enter para seleccionar una etiqueta y ubicarla en el punto correcto.</p>
+        <p className="small-spacing with-bullet" tabIndex="0">Presiona "P" <FaPause /> para pausar y "C" <FaPlay /> para continuar.</p>
+        <p className="small-spacing with-bullet" tabIndex="0">Presiona "R" <FaRedo /> para reiniciar el juego.</p>
+        <p className="small-spacing with-bullet" tabIndex="0">Si necesitas ayuda, puedes encontrar pistas navegando con la tecla <strong>Tab</strong>.</p>
+    </div>
         </div>
 
 		<div className="related-content">

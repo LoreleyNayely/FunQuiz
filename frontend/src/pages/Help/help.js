@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "../../components/header";
+import './help.css';
 
 function Help() {
   const [questions, setQuestions] = useState([]);
@@ -39,12 +40,12 @@ function Help() {
   return (
     <div>
       <Header />
-      <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+      <div className="help-container" style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
         <h1 tabIndex={1}>Centro de Ayuda</h1>
 
         {/* Formulario para agregar nueva pregunta */}
         <h2 tabIndex={2}>Haz tu pregunta</h2>
-        <div style={{ marginBottom: "20px" }}>
+        <div style={{ marginBottom: "20px",marginRight:"20px" }}>
           <input
             id="question-input"
             type="text"

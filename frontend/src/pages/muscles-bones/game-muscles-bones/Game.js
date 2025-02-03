@@ -166,7 +166,7 @@ const Game = () => {
     
 
   return (
-    <div className="game">
+    <div className="game-muscle">
         {!hasStarted ? (
 			<div className="overlay-screen"> {}
 			  <h1 tabIndex="0">¡Bienvenido al Juego de Huesos y Músculos!</h1>

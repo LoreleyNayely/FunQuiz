@@ -28,7 +28,7 @@ nav {
 nav a {
     text-decoration: none;
     color: #333;
-    padding: 30px 60px;
+    padding: 40px 60px;
     transition: background-color 0.3s;
 }
 
@@ -43,7 +43,9 @@ nav img {
     margin-left: auto; /* Esto mueve la imagen hacia la derecha */
     margin-right: 30px;
 }
-
+nav p{
+    margin-left: auto;
+}
 nav a span {
     display: block;
     margin-top: -8px;
@@ -53,22 +55,21 @@ nav a span {
 
 .sesion {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    align-items: center; /* Centra verticalmente los elementos */
     justify-content: flex-end; /* Alinea los elementos a la derecha */
-    font-size: 100%; /* Mismo tamaño que el menú */
-    
-
+    gap: 10px; /* Espacio entre elementos */
 }
 
 .sesion button {
     font-family: 'Itim';
-    font-size: 100%;
+    font-size: 120%;
     padding: 30px 50px; /* Mismo padding que el menú */
     background-color: #B9C7B9; /* Color de fondo similar al menú */
-    border: none;
     color: #333; /* Color de texto */
     margin-bottom: 0px;
+    display: flex; /* Usa flexbox en el botón */
+    align-items: center; /* Centra verticalmente los elementos dentro del botón */
+    gap: 15px; /* Espacio entre el texto y el icono */
 }
 
 .sesion button:hover {
@@ -171,21 +172,31 @@ ul li:not(.with-bullet) {
 .related-items {
     display: flex;
     gap: 15px;
+    flex-wrap: wrap; /* Important: Allows items to wrap to the next line */
 }
 
 .related-item {
-    width: calc(25% - 15px);
+    width: calc(25% - 15px); /* Or adjust as needed */
+    height: 250px; /* Set a fixed height for consistent item sizes */
     background-color: #fff;
-    overflow: hidden;
+    overflow: hidden; /* Prevents image from overflowing */
     text-align: center;
-    margin-bottom: 160px;
-    border: 1px solid #000; /* Añadido el borde */
+    margin-bottom: 20px; /* Adjusted margin */
+    border: 1px solid #000;
+    display: flex; /* Use flexbox for vertical centering */
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
 }
-
 
 .related-item img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover; /* Or contain if you prefer */
+}
+
+.related-item-text { /* New class for any text below the image */
+    margin-top: 10px;
 }
 
 /* moonPhases.css */
