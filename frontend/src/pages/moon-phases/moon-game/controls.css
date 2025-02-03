@@ -1,11 +1,79 @@
-/* controls.css */
-.controls {
-    margin-top: 20px;
-  }
-  
-  button {
-    margin-right: 10px;
-    padding: 10px;
-    font-size: 1rem;
-  }
-  
+/* game-controls.css */
+
+/* Contenedor general de los controles */
+.controls-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Barra de estado */
+.status-bar {
+  color: white;
+  font-size: 16px;
+  margin-right: 20px;
+}
+
+/* Estilo común para los botones */
+.control-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.control-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Estilo para los íconos */
+.icon {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+
+/* Estilos específicos para cada botón */
+.pause-button {
+  background-color: #f44336; /* Rojo */
+  border-radius: 5px;
+}
+
+.start-button {
+  background-color: #4caf50; /* Verde */
+  border-radius: 5px;
+}
+
+.restart-button {
+  background-color: #ff9800; /* Naranja */
+  border-radius: 5px;
+}
+
+.sound-button {
+  background-color: #2196f3; /* Azul */
+  border-radius: 5px;
+}
+
+.fullscreen-button {
+  background-color: #000000; /* Negro */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  bottom: 5px;
+  right: 50px;
+  z-index: 100;
+}
+
+.fullscreen-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
