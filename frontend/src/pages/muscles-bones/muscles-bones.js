@@ -14,7 +14,7 @@ const MusclesBones = () => {
         {/* Contenedor del juego */}
         <div className="game-container">
           <div className="game">
-            <div className="muscles-bones-page">
+            <div className="muscles-bones-page" tabIndex="0" aria-label="Espacio de juego">
               <Game />
             </div>
           </div>
@@ -22,8 +22,8 @@ const MusclesBones = () => {
           {/* Instrucciones del juego */}
 
     <div className="instructions" tabIndex="0" aria-label="Instrucciones del juego">
-        <h2 className="Titulo">🌟Instrucciones🌟</h2>
-        <p className="small-spacing" tabIndex="0">👇 ¡Vamos a jugar! Sigue estos pasos: 👇 </p>
+        <h2 className="Titulo" tabIndex="0">🌟Instrucciones🌟</h2>
+        <p className="small-spacing" tabIndex="0">¡Vamos a jugar! Sigue estos pasos:</p>
         <p className="small-spacing with-bullet" tabIndex="0">Usa las teclas 👆 (arriba) y 👇 (abajo) para moverte entre las etiquetas.</p>
         <p className="small-spacing with-bullet" tabIndex="0">Presiona Enter (↵) para elegir la etiqueta y colocarla en su lugar correcto. ¡Así de fácil! 🎯.</p>
         <p className="small-spacing with-bullet" tabIndex="0">Si necesitas un descanso, presiona "P" para pausar.</p>
@@ -35,7 +35,7 @@ const MusclesBones = () => {
         </div>
 
 		<div className="related-content">
-                    <h2>Más contenido relacionado</h2>
+                    <h2 tabIndex="0">Más contenido relacionado</h2>
                     <div className="related-items">
                         <div className="related-item">
                             <a href="https://www.youtube.com/watch?v=qBNb8FwOlzQ">
