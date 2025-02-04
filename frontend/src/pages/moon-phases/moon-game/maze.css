@@ -8,7 +8,7 @@
   max-width: 800px; /* Ancho máximo del laberinto */
   margin: 0 auto; /* Centrar el laberinto en la página */
   width: 100%;
-  margin-left: -30px;
+  margin-left: -55px;
   margin-top: 16px;
 }
 
@@ -41,4 +41,22 @@
   border-radius: 50%; /* Bordes redondeados (opcional) */
   width: 100%; /* Ocupa todo el espacio de la celda */
   height: 100%;
+}
+
+
+.victory-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.victory-message img {
+  width: 800px;
+  margin-bottom: 50px;
+}
+
+.maze-container p{
+  color: white;
 }

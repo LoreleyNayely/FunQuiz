@@ -75,8 +75,8 @@ function Header() {
                 </p>
                 <img
                     src={images('./jpoa.png')}
-                    alt="Avatar del usuario"
-                    tabIndex="0" // Agrega tabIndex para que sea enfocable
+                    alt="Avatar del usuario"tabIndex="0" // Agrega tabIndex para que sea enfocable
+                    aria-label={`Avatar de ${username}`}
                 />
             </nav>
 

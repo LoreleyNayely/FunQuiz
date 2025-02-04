@@ -44,22 +44,18 @@
 
 /* Estilos específicos para cada botón */
 .pause-button {
-  background-color: #f44336; /* Rojo */
   border-radius: 5px;
 }
 
 .start-button {
-  background-color: #4caf50; /* Verde */
   border-radius: 5px;
 }
 
 .restart-button {
-  background-color: #ff9800; /* Naranja */
   border-radius: 5px;
 }
 
 .sound-button {
-  background-color: #2196f3; /* Azul */
   border-radius: 5px;
 }
 
@@ -69,11 +65,26 @@
   width: 40px;
   height: 40px;
   position: absolute;
-  bottom: 5px;
   right: 50px;
   z-index: 100;
 }
 
 .fullscreen-button:hover {
   background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Estilos para el contenedor cuando está en pantalla completa */
+.fullscreen {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../../../assets/gameFont.png');
+  background-size:contain; /* Ajusta la imagen al tamaño del contenedor */
+  background-repeat: no-repeat;
+}
+
+
+/* Si quieres que las celdas tengan un tamaño más grande aún, puedes cambiar la propiedad */
+.fullscreen .cell {
+  width: 60px; /* O el tamaño que prefieras */
+  height: 60px;
 }

@@ -1,15 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import './moon-phases.css';
 import Maze from '../moon-phases/moon-game/maze';
-import Timer from '../moon-phases/moon-game/timer';
-import Controls from '../moon-phases/moon-game/controls';
 import Header from '../../components/header';
 
 const images = require.context('../../assets', false, /\.(png|jpe?g|svg)$/);
 
 function Moon() {
-    const [isSoundOn, setIsSoundOn] = useState(true);
-    const [isFullscreen, setIsFullscreen] = useState(false);
+
+    useEffect(() => {
+        const handleKeyPress = (event) => {
+            if (event.key === ' ') {  // Verifica si la tecla presionada es el espacio
+                const instructions = document.getElementById('instructions');
+                if (instructions) {
+                    instructions.focus();  // Hace foco en las instrucciones
+                }
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyPress);
+
+        // Limpieza al desmontar el componente
+        return () => {
+            window.removeEventListener('keydown', handleKeyPress);
+        };
+    }, []);
 
     return (
         <div>
@@ -19,32 +33,31 @@ function Moon() {
                 <div className="game-container">
                     <div className="game">
                         <div className="moon-phases-page" tabIndex="0">
-                            <Timer />
                             <Maze />
-                            <Controls
-                                isSoundOn={isSoundOn}
-                                setIsSoundOn={setIsSoundOn}
-                                isFullscreen={isFullscreen}
-                                setIsFullscreen={setIsFullscreen}
-                                containerClass="game" 
-                            />
                         </div>
                     </div>
 
                     {/* Instrucciones del juego */}
-                    <div className="instructions" tabIndex="0" aria-label="Instrucciones del juego">
-                        <h2>Instrucciones</h2>
-                        <ul>
-                            <li className="small-spacing with-bullet">Usa las flechitas de tu teclado:</li>
-                            <li className="small-spacing"><b>➡️ (derecha) ⬅️ (izquierda)</b></li>
-                            <li className="large-spacing"><b>⬆️ (arriba) ⬇️ (abajo)</b></li>
-                            <li className="large-spacing with-bullet">Busca las fases de la Luna.</li>
-                            <li className="small-spacing with-bullet">Cuando encuentres una fase,</li>
-                            <li className="large-spacing"><b>¡aparecerá su nombre y brillará!</b></li>
-                            <li className="small-spacing with-bullet">¡Encuéntralas todas!</li>
-                            <li className="small-spacing">¡Buena suerte! 🚀</li>
-                        </ul>
+                    <div
+                        id="instructions"
+                        className="instructions"
+                        tabIndex="0"
+                        aria-live="assertive" // Se lee automáticamente cuando se actualiza
+                        aria-label="Instrucciones"
+                    >
+                    <h2>Instrucciones</h2>
+                    <ul tabIndex="0" aria-label="" >
+                        <li className="small-spacing with-bullet" tabIndex="0" aria-label="Usa las flechitas de tu teclado:">Usa las flechitas de tu teclado:</li>
+                        <li className="small-spacing" tabIndex="0" aria-label="Derecha e izquierda">➡️ (derecha) ⬅️ (izquierda)</li>
+                        <li className="large-spacing" tabIndex="0" aria-label="Arriba y abajo">⬆️ (arriba) ⬇️ (abajo)</li>
+                        <li className="large-spacing with-bullet" tabIndex="0" aria-label="Busca las fases de la Luna">Busca las fases de la Luna.</li>
+                        <li className="small-spacing with-bullet" tabIndex="0" aria-label="Cuando encuentres una fase">Cuando encuentres una fase,</li>
+                        <li className="large-spacing" tabIndex="0" aria-label="Aparecerá su nombre y brillará">¡aparecerá su nombre y brillará!</li>
+                        <li className="small-spacing with-bullet" tabIndex="0" aria-label="¡Encuéntralas todas!">¡Encuéntralas todas!</li>
+                        <li className="small-spacing" tabIndex="0" aria-label="¡Buena suerte!">¡Buena suerte! 🚀</li>
+                    </ul>
                     </div>
+
                 </div>
 
                 {/* Contenido relacionado */}

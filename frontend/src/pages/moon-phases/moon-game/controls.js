@@ -1,98 +1,114 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './controls.css';
 
-// Importando imágenes usando require.context
 const images = require.context('../../../assets', false, /\.(png|jpe?g|svg)$/);
 
-function Controls({ isFullscreen, setIsFullscreen, isSoundOn, setIsSoundOn, container }) {
-  const [isPaused, setIsPaused] = useState(false);
-  const [isStarted, setIsStarted] = useState(false);
+function Controls({ isFullscreen, setIsFullscreen, isSoundOn, setIsSoundOn, container, isPaused, setIsPaused, setIsStarted, resetGame }) {
   const [isRestarted, setIsRestarted] = useState(false);
 
-  // Función para alternar entre Pausa/Play
+  useEffect(() => {
+    setIsStarted(true); // Permite que el personaje se mueva al cargar la página
+  }, [setIsStarted]);
+
   const togglePause = () => {
-    setIsPaused(!isPaused);
+    setIsPaused(prevState => !prevState);
+    if (isPaused) {
+      setIsStarted(true);
+    }
   };
 
-  // Función para alternar entre Sonido On/Off
   const toggleSound = () => {
     setIsSoundOn(!isSoundOn);
   };
 
-  // Función para alternar Pantalla Completa
   const toggleFullscreen = () => {
     const element = document.querySelector(`.${container}`);
-    if (element) {
-      if (!isFullscreen) {
-        if (element.requestFullscreen) {
-          element.requestFullscreen();
-        } else if (element.webkitRequestFullscreen) {
-          element.webkitRequestFullscreen();
-        } else if (element.mozRequestFullScreen) {
-          element.mozRequestFullScreen();
-        } else if (element.msRequestFullscreen) {
-          element.msRequestFullscreen();
-        }
-      } else {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) {
-          document.webkitExitFullscreen();
-        } else if (document.mozCancelFullScreen) {
-          document.mozCancelFullScreen();
-        } else if (document.msExitFullscreen) {
-          document.msExitFullscreen();
-        }
-      }
-      setIsFullscreen(!isFullscreen);
+    if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+      document.exitFullscreen?.() ||
+      document.webkitExitFullscreen?.() ||
+      document.mozCancelFullScreen?.() ||
+      document.msExitFullscreen?.();
+      setIsFullscreen(false);
+      // Elimina la clase fullscreen cuando salga del modo pantalla completa
+      element.classList.remove('fullscreen');
+    } else if (element) {
+      element.requestFullscreen?.() ||
+      element.webkitRequestFullscreen?.() ||
+      element.mozRequestFullScreen?.() ||
+      element.msRequestFullscreen?.();
+      setIsFullscreen(true);
+      // Agrega la clase fullscreen cuando entre en pantalla completa
+      element.classList.add('fullscreen');
     }
   };
+  
 
-  // Función para alternar Iniciar/Reiniciar
   const toggleStartRestart = () => {
-    setIsStarted(!isStarted);
-    setIsRestarted(!isRestarted);
+    setIsStarted(true);
+    setIsRestarted(prev => !prev);
+    setIsPaused(false);
+    resetGame();
   };
 
   return (
     <div className="controls-container">
-      {/* Barra de estado */}
-      <div className="status-bar">
-        <p>Estado: {isStarted ? "Jugando" : "Detenido"}</p>
+      <div className="status-bar" aria-live="polite">
+        <p>Estado: {isPaused ? "Pausado" : "Jugando"}</p>
       </div>
 
-      {/* Botón de Pausa/Play */}
-      <button onClick={togglePause} className="control-button pause-button" title={isPaused ? "Reanudar" : "Pausa"}>
+      <button 
+        onClick={togglePause} 
+        className="control-button pause-button" 
+        title={isPaused ? "Reanudar" : "Pausa"} 
+        disabled={isRestarted} 
+        tabIndex="0"
+        aria-label={isPaused ? "Reanudar el juego" : "Pausar el juego"}
+      >
         <img
           src={images(isPaused ? './play-icon.png' : './pause-icon.png')}
-          alt={isPaused ? "Reanudar" : "Pausa"}
+          alt={isPaused ? "Icono de reanudar" : "Icono de pausa"}
           className="icon"
         />
       </button>
 
-      {/* Botón de Iniciar/Reiniciar */}
-      <button onClick={toggleStartRestart} className="control-button start-restart-button" title={isStarted ? "Reiniciar" : "Iniciar"}>
+      <button 
+        onClick={toggleStartRestart} 
+        className="control-button start-restart-button" 
+        title="Iniciar/Reiniciar" 
+        tabIndex="0"
+        aria-label="Iniciar o reiniciar el juego"
+      >
         <img
-          src={images(isStarted ? './restart-icon.png' : './play-icon.png')}
-          alt={isStarted ? "Reiniciar" : "Iniciar"}
+          src={images('./restart-icon.png')}
+          alt="Icono de iniciar o reiniciar"
           className="icon"
         />
       </button>
 
-      {/* Botón de Sonido */}
-      <button onClick={toggleSound} className="control-button sound-button" title={isSoundOn ? "Desactivar sonido" : "Activar sonido"}>
+      <button 
+        onClick={toggleSound} 
+        className="control-button sound-button" 
+        title={isSoundOn ? "Desactivar sonido" : "Activar sonido"} 
+        tabIndex="0"
+        aria-label={isSoundOn ? "Desactivar el sonido" : "Activar el sonido"}
+      >
         <img
           src={isSoundOn ? images('./sound-on-icon.png') : images('./sound-off-icon.png')}
-          alt={isSoundOn ? "Sonido activado" : "Sonido desactivado"}
+          alt={isSoundOn ? "Icono de sonido activado" : "Icono de sonido desactivado"}
           className="icon"
         />
       </button>
 
-      {/* Botón de Pantalla Completa */}
-      <button onClick={toggleFullscreen} className="control-button fullscreen-button" title={isFullscreen ? "Salir de pantalla completa" : "Pantalla completa"}>
+      <button 
+        onClick={toggleFullscreen} 
+        className="control-button fullscreen-button" 
+        title={isFullscreen ? "Salir de pantalla completa" : "Pantalla completa"} 
+        tabIndex="0"
+        aria-label={isFullscreen ? "Salir de pantalla completa" : "Activar pantalla completa"}
+      >
         <img
           src={isFullscreen ? images('./normalscreen-icon.png') : images('./fullscreen-icon.png')}
-          alt={isFullscreen ? "Pantalla normal" : "Pantalla completa"}
+          alt={isFullscreen ? "Icono de pantalla normal" : "Icono de pantalla completa"}
           className="icon"
         />
       </button>

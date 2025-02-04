@@ -1,22 +1,32 @@
-/* timer.css */
 .timer {
-  display: flex; /* Usa flexbox para alinear los elementos */
-  align-items: center; /* Centra verticalmente los elementos */
-  gap: 8px; /* Espacio entre el ícono y el texto */
-  font-family: 'Aclonica';
-  position: absolute;
-  top: 5px;
-  left: 0px;
-  font-size: 15px;
-  font-weight: bold;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 5px 10px;
-    
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra todo el contenido */
+}
 
-  .clock-icon {
-    width: 30px; /* Ajusta el tamaño del ícono */
-    height: 30px; /* Ajusta el tamaño del ícono */
-    object-fit: contain; /* Evita que la imagen se distorsione */
-  }
+.timer-content {
+  display: flex;
+  align-items: center; /* Coloca el ícono y el texto del tiempo en una misma línea */
+  margin-bottom: 10px; /* Espacio entre el temporizador y el objetivo */
+  margin-right: 500px;
+}
+
+.clock-icon {
+  width: 24px; /* Ajusta el tamaño del ícono del reloj */
+  height: 24px;
+  margin-right: 8px; /* Espacio entre el ícono y el texto */
+}
+
+.time-text {
+  font-size: 15px; /* Tamaño del texto del tiempo */
+  font-weight: bold;
+}
+
+.objective-text {
+  font-size: 20px; /* Tamaño del texto del objetivo */
+  font-weight: normal;
+  text-align: center; /* Centra el texto del objetivo */
+  margin-top: -25px;
+  margin-left: 300px;
+  font-weight: bold;
+}
