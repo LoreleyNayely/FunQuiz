@@ -32,23 +32,23 @@ const WaterCycle = () => {
                     <h2>Más contenido relacionado</h2>
                     <div className="related-items">
                         <div className="related-item">
-                            <a href="https://view.genially.com/648654c5774f910012dc8587/presentation-movimientos-y-fases-de-la-luna" target="_blank" rel="noopener noreferrer">
-                                <img src={images('./water1.png')} alt="Relacionado 1" />
+                            <a href="https://www.youtube.com/watch?v=QDCohXW6blg" target="_blank" rel="noopener noreferrer">
+                                <img src={images('./water1.png')} alt="El Ciclo del Agua | Videos Educativos para Niños" />
                             </a>
                         </div>
                         <div className="related-item">
-                            <a href="https://view.genially.com/648654c5774f910012dc8587/presentation-movimientos-y-fases-de-la-luna" target="_blank" rel="noopener noreferrer">
-                                <img src={images('./water2.png')} alt="Relacionado 2" />
+                            <a href="https://www.youtube.com/watch?v=3QVj99UGk3Q" target="_blank" rel="noopener noreferrer">
+                                <img src={images('./water2.png')} alt="El ciclo del agua para niños - ¿Qué es el ciclo del agua?" />
                             </a>
                         </div>
                         <div className="related-item">
-                            <a href="https://view.genially.com/648654c5774f910012dc8587/presentation-movimientos-y-fases-de-la-luna" target="_blank" rel="noopener noreferrer">
-                                <img src={images('./water3.png')} alt="Relacionado 3" />
+                            <a href="https://www.google.com/search?sca_esv=0b611c99b0894382&sxsrf=AHTn8zrN3YypGO-y3nPTeVeYm-oV2cTQmw:1738680028425&q=ciclo+del+agua&udm=7&fbs=ABzOT_BnMAgCWdhr5zilP5f1cnRvK9uZj3HA_MTJAA6lXR8yQIHhBi298nC38CQZOY2HEJZSPQhZF2kOb4qX1afvODAVWv8m76ktAfVMsqo7irMl89HVIuaXwlUyMxcLMyn5_evcl849gmv34kMFYuFqZn1wXqnEr-YEEPXtglkeiiRWru_1H20xs_hRBueBKRW14Qr730AU&sa=X&ved=2ahUKEwiJqOPrn6qLAxX3SDABHYZaFiQQtKgLegQIEhAB&biw=1536&bih=735&dpr=1.25#" target="_blank" rel="noopener noreferrer">
+                                <img src={images('./water3.png')} alt="El ciclo del agua | Camaleón" />
                             </a>
                         </div>
                         <div className="related-item">
-                            <a href="https://www.youtube.com/watch?v=ma0kKMc9PbE" target="_blank" rel="noopener noreferrer">
-                                <img src={images('./water4.png')} alt="Relacionado 4" />
+                            <a href="https://www.youtube.com/watch?v=9LVXk0sFauM" target="_blank" rel="noopener noreferrer">
+                                <img src={images('./water4.png')} alt="La Eduteca - El ciclo del agua" />
                             </a>
                         </div>
                     </div>
