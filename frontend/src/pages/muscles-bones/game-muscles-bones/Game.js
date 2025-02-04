@@ -30,10 +30,14 @@ const Game = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [currentPointIndex, setCurrentPointIndex] = useState(0);
   const [gameOver, setGameOver] = useState(false);
+  
   const audioRef = useRef(null);
   const timeoutRef = useRef(null);
+  const feedbackRef = useRef(null);
+  const bodyImageRef = useRef(null);
+  const labelsLeftRef = useRef(null);
+  const labelsRightRef = useRef(null);
 
-  
   const points = [
     { id: 1, x: 21, y: 60, description: 'Este hueso es el más largo y fuerte del cuerpo humano. Se encuentra en la parte superior de tu pierna, ¡te ayuda a saltar y correr!' },
     { id: 2, x: 30, y: 80, description: 'Este hueso es el principal en la espinilla. Se localiza entre la rodilla y el tobillo.' },
@@ -47,49 +51,48 @@ const Game = () => {
     { id: 10, x: 64, y: 24, description: 'Este músculo grande está en la parte superior de tu espalda. Te ayuda a mover los hombros y a mantener el cuello recto.' },
   ];
 
-
-const playAudio = useCallback(async (type) => {
-  try {
-    // Detener y resetear audio previo
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
+  useEffect(() => {
+    if (showPopup && feedbackRef.current) {
+      feedbackRef.current.focus();
     }
+  }, [showPopup]);
 
-    // Cargar nuevo audio
-    const audioFile = type === 'correct' ? correctSound : wrongSound;
-    const newAudio = new Audio(audioFile);
-    
-    // Forzar precarga
-    newAudio.preload = 'auto';
-    await new Promise(resolve => newAudio.addEventListener('canplaythrough', resolve));
-    
-    // Reproducir con manejo de políticas del navegador
-    const playPromise = newAudio.play();
-    
-    if (playPromise !== undefined) {
-      await playPromise
-        .then(() => {
-          audioRef.current = newAudio;
-        })
-        .catch(error => {
-          console.log('Reproducción automática bloqueada:', error);
-          // Mostrar UI para interacción manual
-          setFeedback('¡Haz clic en cualquier lugar para activar el sonido!');
-          setShowPopup(true);
-          
-          // Habilitar reproducción después de interacción
-          const enableAudio = () => {
-            newAudio.play();
-            document.removeEventListener('click', enableAudio);
-          };
-          document.addEventListener('click', enableAudio);
-        });
+  const playAudio = useCallback(async (type) => {
+    try {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
+
+      const audioFile = type === 'correct' ? correctSound : wrongSound;
+      const newAudio = new Audio(audioFile);
+      
+      newAudio.preload = 'auto';
+      await new Promise(resolve => newAudio.addEventListener('canplaythrough', resolve));
+      
+      const playPromise = newAudio.play();
+      
+      if (playPromise !== undefined) {
+        await playPromise
+          .then(() => {
+            audioRef.current = newAudio;
+          })
+          .catch(error => {
+            console.log('Reproducción automática bloqueada:', error);
+            setFeedback('¡Haz clic en cualquier lugar para activar el sonido!');
+            setShowPopup(true);
+            
+            const enableAudio = () => {
+              newAudio.play();
+              document.removeEventListener('click', enableAudio);
+            };
+            document.addEventListener('click', enableAudio);
+          });
+      }
+    } catch (error) {
+      console.error('Error de audio:', error);
     }
-  } catch (error) {
-    console.error('Error de audio:', error);
-  }
-}, []);
+  }, []);
 
   const handleStart = useCallback(() => {
     setHasStarted(true);
@@ -112,7 +115,6 @@ const playAudio = useCallback(async (type) => {
     const selectedLabel = labels[selectedLabelIndex];
     const isCorrect = selectedLabel.id === currentPoint.id;
 
-    // Limpiar estados previos
     setFeedback('');
     setShowPopup(false);
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -149,8 +151,8 @@ const playAudio = useCallback(async (type) => {
     }
 
     timeoutRef.current = setTimeout(() => {
-      setFeedback('');
       setShowPopup(false);
+      bodyImageRef.current?.focus();
     }, 3000);
   }, [currentPointIndex, gameOver, labels, playAudio, points.length, selectedLabelIndex]);
 
@@ -191,6 +193,10 @@ const playAudio = useCallback(async (type) => {
 
   const handleKeyDown = useCallback((e) => {
     if (gameOver) return;
+
+    if (['ArrowUp', 'ArrowDown'].includes(e.key)) {
+      e.preventDefault();
+    }
 
     switch (e.key.toLowerCase()) {
       case 'arrowup':
@@ -235,68 +241,105 @@ const playAudio = useCallback(async (type) => {
         <div className="overlay-screen">
           <h1 tabIndex="0">¡Bienvenido al Juego de Huesos y Músculos!</h1>
           <p tabIndex="0">Etiqueta correctamente los puntos del cuerpo humano.</p>
-          <p tabIndex="0">Presiona <FaPlay /> para comenzar.</p>
-          <button onClick={handleStart} className="play-button" tabIndex="0">
+          <button 
+            onClick={handleStart} 
+            className="play-button"
+            autoFocus
+            aria-label="Comenzar juego"
+          >
             <FaPlay /> Jugar
           </button>
         </div>
       ) : (
         <>
           <div className="header">
-            <div className="timer" tabIndex="0">⏱️ Tiempo: {timer}s</div>
-            <p className="indicator" tabIndex="0">Selecciona la etiqueta para el punto: {currentPointIndex + 1}</p>
+            <div className="timer" aria-live="polite" tabIndex="0">
+              ⏱️ Tiempo: {timer}s
+            </div>
+            <p className="indicator" aria-live="polite"tabIndex="0">
+              Selecciona la etiqueta para el punto: {currentPointIndex + 1}
+            </p>
           </div>
 
           {showPopup && (
-            <div className={`feedback-popup ${feedback.includes('Correcto') ? 'correct' : 'incorrect'}`} tabIndex="0">
-              {feedback}
+            <div
+              ref={feedbackRef}
+              className={`feedback-popup ${feedback.includes('Correcto') ? 'correct' : 'incorrect'}`}
+              role="alertdialog"
+              aria-labelledby="feedback-heading"
+              tabIndex="-1"
+            >
+              <h2 id="feedback-heading">{feedback}</h2>
+              {gameOver && (
+                <button onClick={handleRestart} tabIndex="0">
+                  Reiniciar Juego
+                </button>
+              )}
             </div>
           )}
 
-          <div
-            aria-live="assertive"
-            role="alert"
-            style={{ position: 'absolute', left: '-9999px' }}
-          >
-            {labels[selectedLabelIndex]?.name}
-          </div>
-
-          <div className="labels-left">
-            {labels.filter(label => label.side === 'left').map((label) => (
+          <div className="labels-left" ref={labelsLeftRef}>
+            {labels.filter(label => label.side === 'left').map((label, index) => (
               <Label
                 key={label.id}
                 label={label}
                 selected={selectedLabelIndex === labels.indexOf(label)}
                 onSelect={() => setSelectedLabelIndex(labels.indexOf(label))}
-                tabIndex="0"
+                tabIndex={index === 0 ? 0 : -1}
               />
             ))}
           </div>
 
-          <BodyImage points={points} handleDropLabel={handleDropLabel} />
+          <BodyImage 
+            ref={bodyImageRef}
+            points={points} 
+            handleDropLabel={handleDropLabel}
+            currentPointIndex={currentPointIndex}
+          />
 
-          <div className="labels-right">
-            {labels.filter(label => label.side === 'right').map((label) => (
+          <div className="labels-right" ref={labelsRightRef}>
+            {labels.filter(label => label.side === 'right').map((label, index) => (
               <Label
                 key={label.id}
                 label={label}
                 selected={selectedLabelIndex === labels.indexOf(label)}
                 onSelect={() => setSelectedLabelIndex(labels.indexOf(label))}
-                tabIndex="0"
+                tabIndex={index === 0 ? 0 : -1}
               />
             ))}
           </div>
 
           <div className="controls">
-            <button onClick={handlePause} disabled={gameOver} aria-label="Pausar juego" tabIndex="0">
+            <button 
+              onClick={handlePause} 
+              disabled={gameOver}
+              aria-label={paused ? 'Juego pausado' : 'Pausar juego'}
+              aria-disabled={gameOver}
+            >
               <FaPause />
             </button>
-            <button onClick={handleRestart} aria-label="Reiniciar juego" tabIndex="0">
+            <button 
+              onClick={handleRestart} 
+              aria-label="Reiniciar juego"
+            >
               <FaRedo />
             </button>
-            <button onClick={handleContinue} disabled={!paused || gameOver} aria-label="Continuar juego" tabIndex="0">
+            <button 
+              onClick={handleContinue} 
+              disabled={!paused || gameOver}
+              aria-label="Continuar juego"
+              aria-disabled={!paused || gameOver}
+            >
               <FaPlay />
             </button>
+          </div>
+
+          <div 
+            aria-live="polite" 
+            className="sr-only"
+            aria-atomic="true"
+          >
+            {labels[selectedLabelIndex]?.name} seleccionado
           </div>
         </>
       )}
