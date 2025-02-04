@@ -67,6 +67,9 @@ const Game = () => {
       const audioFile = type === 'correct' ? correctSound : wrongSound;
       const newAudio = new Audio(audioFile);
       
+      newAudio.preload = 'auto';
+      await new Promise(resolve => newAudio.addEventListener('canplaythrough', resolve));
+      
       const playPromise = newAudio.play();
       
       if (playPromise !== undefined) {
@@ -76,7 +79,7 @@ const Game = () => {
           })
           .catch(error => {
             console.log('Reproducción automática bloqueada:', error);
-            setFeedback('¡Haz clic para activar el sonido!');
+            setFeedback('¡Haz clic en cualquier lugar para activar el sonido!');
             setShowPopup(true);
             
             const enableAudio = () => {
@@ -135,7 +138,6 @@ const Game = () => {
           if (newIndex >= points.length) {
             setGameOver(true);
             setFeedback('¡Juego Finalizado! 🎉');
-            setShowPopup(true);
           }
           return Math.min(newIndex, points.length - 1);
         });
@@ -164,8 +166,8 @@ const Game = () => {
 
   const handleContinue = useCallback(() => {
     setPaused(false);
-    setFeedback('Continua jugando!');
-    setShowPopup(true);
+    setFeedback('');
+    setShowPopup(false);
   }, []);
 
   const handleRestart = useCallback(() => {
@@ -175,7 +177,15 @@ const Game = () => {
   useEffect(() => {
     if (!paused && !gameOver) {
       const interval = setInterval(() => {
-        setTimer(prev => prev <= 1 ? 0 : prev - 1);
+        setTimer(prev => {
+          if (prev <= 1) {
+            setGameOver(true);
+            setFeedback('El tiempo se ha terminado, Reiniciar Juego');
+            setShowPopup(true);
+            return 0;
+          }
+          return prev - 1;
+        });
       }, 1000);
       return () => clearInterval(interval);
     }
@@ -246,11 +256,10 @@ const Game = () => {
             <div className="timer" tabIndex="0">
               ⏱️ Tiempo: {timer}s
             </div>
-            <p className="indicator" aria-live="polite"tabIndex="0">
+            <p className="indicator" aria-live="polite" tabIndex="0">
               Selecciona la etiqueta para el punto: {currentPointIndex + 1}
             </p>
           </div>
-
 
           {showPopup && (
             <div
