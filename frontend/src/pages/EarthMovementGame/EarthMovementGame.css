@@ -1,21 +1,38 @@
-/* Contenedor principal */
 
-  /* Zona del juego */
-  .game-area {
-    width: 70%;
-    background-color: #000;
-    overflow: hidden;
-    position: relative;
-    margin-left: 20px;
-    background: #000000;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    color: #fff;
-    text-align: center;
-  }
-  
-  
+.game-area {
+  width: 100%;
+  background: radial-gradient(circle, #1b0038, #0d0026); /* Espacio oscuro con un degradado hacia negro */
+  padding: 10px 50px 100px;
+  border-radius: 10px;
+  color: #ffffff; /* Color amarillo brillante para simular luz estelar */
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Sombras para mayor profundidad */
+}
+
+/* Efecto de pocas estrellas */
+.game-area::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.8) 2px, transparent 4px),
+    radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.6) 1px, transparent 3px),
+    radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.9) 3px, transparent 5px),
+    radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.7) 1.5px, transparent 3px),
+    radial-gradient(circle at 90% 40%, rgba(255, 255, 255, 0.8) 2px, transparent 4px);
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
+.card-container {
+  perspective: 100%; /* Necesario para el efecto 3D */
+}
+
   /* Tarjetas */
   .card-grid {
     display: grid;
@@ -23,38 +40,72 @@
     gap: 20px;
     justify-content: center;
   }
+
+ 
   
   .card {
     width: 100%;
-    height: 180px;
-    font-size: 30px;
-    background: #2d89ef;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.3s, background 0.3s;
+    height: 300px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+  }
+
+  .card-container.flipped .card {
+    transform: rotateY(180deg); /* Efecto de rotación */
+  }
+  
+
+  .card .front,
+  .card .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Oculta la cara trasera */
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 12px; /* Tamaño de la letra en la parte trasera */
+
   }
+  
+  .card .front {
+    background: linear-gradient(180deg, #1e90ff, #40e0d0); /* Frente */
+    color: white;
+  }
+  
+  .card .back {
+    background: #ffffff; /* Fondo blanco para la pregunta */
+    transform: rotateY(180deg); /* Girar hacia atrás */
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+
   
   /* Contenedor de preguntas */
   .question-container {
     margin-top: 20px;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content:center;
   }
   
   /* Caja de preguntas */
   .question-box {
     width: 80%;
-    background: #e9c46a;
-    padding: 20px;
+    background: linear-gradient(180deg, #000000, #1e90ff); /* Turquesa degradado a azul celeste */
+    padding: 30px;
     border-radius: 10px;
     text-align: center;
     min-height: 150px;
+    color: white; /* Texto blanco para contraste */
+  box-shadow: 0 0 15px rgba(0, 191, 255, 0.3); /* Sombra suave para resaltar */
+
+
   }
   
   /* Estilo de respuestas */
@@ -62,29 +113,64 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+
   }
   
   .answer-button {
     padding: 10px;
-    background: #264653;
+    background: #1b3b6f; /* Azul profundo como base */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    font-size: 16px
   }
   
   .answer-button.correct {
-    background: #2a9d8f;
+    background: rgba(57, 157, 42, 0.9); /* Verde azulado suave */
+  box-shadow: 0 0 10px rgba(42, 157, 143, 0.5);
   }
   
   .answer-button.incorrect {
-    background: #e63946;
+    background: #e63946; /* Rojo intenso para errores */
+    box-shadow: 0 0 10px rgba(230, 57, 70, 0.5);
   }
   
   .answer-button.disabled {
-    background: gray;
+    background: #636e72; /* Gris sobrio */
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+  .answer-button:hover:not(.disabled) {
+  transform: scale(1.05); /* Ligero zoom al pasar el cursor */
+  box-shadow: 0 0 15px rgba(0, 191, 255, 0.5); /* Brillo turquesa */
+  background-color: #00ced1;
+
+  }
+
+  .answer-button.correct {
+    background: rgba(57, 157, 42, 0.9);
+    color: white;
   }
   
+  /* ❌ Incorrecto */
+  .answer-button.incorrect {
+    background: #e63946;
+    color: white;
+  }
+  
+  /* Mensaje de retroalimentación */
+  .feedback {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 5px;
+  }
 
 
   .related-content {
@@ -118,4 +204,91 @@
     height: auto;
 }
 
+.timer {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 20px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
 
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 15px;
+}
+
+.controls button {
+  background: linear-gradient(180deg, #f5deb3, #e3c285); /* Beige con tonos cálidos */
+  border: 2px solid #4552bf ;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.feedback-overlay {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.5s ease-in-out;
+  color: white; /* Texto blanco */
+  animation: fadeIn 0.5s ease-in-out;
+  color: white; /* Texto blanco */
+  white-space: pre-line; /* Permite saltos de línea en el mensaje */
+}
+
+/* Estilos diferentes para respuestas correctas e incorrectas */
+.feedback-overlay.success {
+  background: rgba(57, 157, 42, 0.9); /* Verde */
+}
+
+.feedback-overlay.error {
+  background: rgba(211, 34, 49, 0.9); /* Rojo */
+}
+
+/* Animación para que la retroalimentación aparezca suavemente */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.card-number {
+  font-size: 5rem; /* Ajusta el tamaño según necesites */
+  font-weight: bold;
+  color: white; /* O el color que prefieras */
+}
+
+.emoji-large {
+  font-size: 3rem; /* Ajusta el tamaño según necesites */
+  font-weight: bold;
+  display: inline-block;
+}
