@@ -144,15 +144,6 @@ const questionsPool = [
   },
 ];
 
-// Rellenar hasta 50 preguntas...
-for (let i = 21; i <= 50; i++) {
-  questionsPool.push({
-    question: `Pregunta ${i}: ¿Qué fenómeno ocurre debido al movimiento de la Tierra?`,
-    options: ["Fenómeno A", "Fenómeno B", "Fenómeno C"],
-    correctIndex: Math.floor(Math.random() * 3),
-    explanation: `Explicación del fenómeno ${i}.`,
-  });
-}
 
 // Seleccionar aleatoriamente 6 preguntas de las 100
 const getRandomQuestions = () => {
