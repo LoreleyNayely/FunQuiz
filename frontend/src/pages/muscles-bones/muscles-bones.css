@@ -1,5 +1,10 @@
 
-
+.instructions h2.Titulo {
+  margin-top: 0px;
+  font-family: 'Jersey';
+  font-size: 1.6rem;
+  margin-left: 65px; /* Mueve el h2 20px hacia la derecha dentro de la sección de instrucciones */
+}
 
 .muscles-bones-page {
     display: flex;
@@ -9,11 +14,16 @@
     font-family: 'Kaisei HarunoUmi';
     background-color: black;   
   }
-  .instructions p {
-    font-family: 'Kaisei HarunoUmi';
-    font-size: 100%;
-    list-style-type: none;
-    padding-left: 0; /* Elimina el padding izquierdo para evitar que los elementos se desalineen */
-    margin: 0; /* Elimina los márgenes por defecto de la lista */
-    text-align: center; /* Centra el contenido de la lista */
+  
+.instructions {
+  width: 30%;
+  background-color: #99BCCD;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 20px;
+  line-height: 1.5;
+  margin-right: 20px;
+  margin-left: 25px;
+  max-height: 500px; /* Ajusta la altura máxima según tus necesidades */
+  overflow-y: auto; /* Esto permitirá que el contenido se desplace si excede el máximo */
 }
