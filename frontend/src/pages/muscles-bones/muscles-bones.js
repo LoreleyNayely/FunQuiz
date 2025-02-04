@@ -39,22 +39,22 @@ const MusclesBones = () => {
                     <div className="related-items">
                         <div className="related-item">
                             <a href="https://www.youtube.com/watch?v=qBNb8FwOlzQ">
-                                <img src={images('./huesos1.jpg')} alt="Video Multimedia - YouTube- Los huesos para niños | El sistema óseo | El cuerpo humano para niños - Smile and Learn Español" />
+                                <img src={images('./huesos1.jpg')} alt="Video Los huesos para niños - Smile and Learn Español" />
                             </a>
                         </div>
                         <div className="related-item">
                             <a href="https://www.youtube.com/watch?v=fyvqwjbNB1o">
-                                <img src={images('./huesos2.jpg')} alt="Video Multimedia - YouTube - Sistema Locomotor (Videos Educativos para Niños)- Mundo divertido de niños" />
+                                <img src={images('./huesos2.jpg')} alt="Video - Sistema Locomotor - Mundo divertido de niños" />
                             </a>
                         </div>
                         <div className="related-item">
                             <a href="https://www.youtube.com/watch?v=5cA161a0Elc">
-                                <img src={images('./musculos1.jpg')} alt="Video Multimedia - YouTube - HUESOS, MÚSCULOS Y ARTICULACIONES - Colegio Privado Maria Medalla Milagrosa" />
+                                <img src={images('./musculos1.jpg')} alt="Video - HUESOS, MÚSCULOS Y ARTICULACIONES - Colegio Privado Maria Medalla Milagrosa" />
                             </a>
                         </div>
                         <div className="related-item">
                             <a href="https://www.youtube.com/watch?v=gmc6QIanvD0">
-                                <img src={images('./musculos2.jpg')} alt="Video Multimedia - YouTube - Los MÚSCULOS para niños | El sistema muscular | El cuerpo humano para niños - Smile and Learn- Español" />
+                                <img src={images('./musculos2.jpg')} alt="Video - Los MÚSCULOS para niños | El sistema muscular - Smile and Learn- Español" />
                             </a>
                         </div>
                     </div>
